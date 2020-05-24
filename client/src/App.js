@@ -33,7 +33,7 @@ function App() {
       </div>
       <div className="stars"></div>
       <div className="twinkling"></div>
-      <div className="clouds"></div>
+
       <Router>
         <LogReg path="/" />
         <UserList path="/users" />
