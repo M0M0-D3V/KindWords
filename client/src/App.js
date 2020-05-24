@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, navigate, Router } from "@reach/router";
 import { Jumbotron } from "react-bootstrap";
-import LogReg from "./views/LogReg";
-import UserList from "./views/UserList";
+import LogReg from "./views/LogReg.jsx";
+import Welcome from "./views/Welcome";
 
 import axios from "axios";
 
@@ -37,11 +37,8 @@ function App() {
       <Router>
         <Welcome path="/welcome" />
         <LogReg path="/" />
-        <UserList path="/users" />
       </Router>
-      <div className="container">
-        <Link to="/users">Get Users List</Link>
-      </div>
+      <div className="container"></div>
     </>
   );
 }
