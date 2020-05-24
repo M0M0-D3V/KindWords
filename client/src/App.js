@@ -10,7 +10,7 @@ function App() {
   const logout = () => {
     axios
       .post(
-        "http://localhost:8000/api/logout",
+        "http://localhost:9001/api/logout",
         {},
         {
           // need to send the cookie in request so server can clear it

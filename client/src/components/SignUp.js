@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const SignUp = props => {
+const SignUp = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
 
-  const register = event => {
+  const register = (event) => {
     event.preventDefault();
 
     const newUser = { username, email, password, confirmPassword };
 
     axios
-      .post("http://localhost:8000/api/register", newUser, {
-        withCredentials: true
+      .post("http://localhost:9001/api/register", newUser, {
+        withCredentials: true,
       })
-      .then(res => {
+      .then((res) => {
         console.log(res);
 
         setUsername("");
@@ -25,7 +25,7 @@ const SignUp = props => {
         setPassword("");
         setConfirmPassword("");
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
 
         setErrors(err.response.data.errors);
@@ -42,7 +42,7 @@ const SignUp = props => {
           <input
             type="text"
             name="username"
-            onChange={e => setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
             value={username}
           />
           {errors.username ? (
@@ -57,7 +57,7 @@ const SignUp = props => {
           <input
             type="email"
             name="email"
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             value={email}
           />
           {errors.email ? (
@@ -72,7 +72,7 @@ const SignUp = props => {
           <input
             type="password"
             name="email"
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
           {errors.password ? (
@@ -87,7 +87,7 @@ const SignUp = props => {
           <input
             type="password"
             name="confirmPassword"
-            onChange={e => setConfirmPassword(e.target.value)}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             value={confirmPassword}
           />
           {errors.confirmPassword ? (

@@ -3,26 +3,26 @@ import React, { useState } from "react";
 import axios from "axios";
 import { navigate } from "@reach/router";
 
-const SignIn = props => {
-  const [email, setEmail] = useState("");
+const SignIn = (props) => {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const login = event => {
+  const login = (event) => {
     event.preventDefault();
     axios
       .post(
-        "http://localhost:8000/api/login",
-        { email, password },
+        "http://localhost:9001/api/login",
+        { username, password },
         {
-          withCredentials: true
+          withCredentials: true,
         }
       )
-      .then(res => {
+      .then((res) => {
         console.log(res);
         navigate("/users");
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         setErrorMessage(err.response.data.msg);
       });
@@ -33,20 +33,20 @@ const SignIn = props => {
       <legend>Sign In</legend>
       <form onSubmit={login}>
         <p className="form-group">
-          <label>Email:</label>
+          <label>Username:</label>
           <input
             type="text"
-            name="email"
-            onChange={e => setEmail(e.target.value)}
-            value={email}
+            name="username"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
           />
         </p>
         <p className="form-group">
           <label>Password:</label>
           <input
             type="password"
-            name="email"
-            onChange={e => setPassword(e.target.value)}
+            name="username"
+            onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
         </p>

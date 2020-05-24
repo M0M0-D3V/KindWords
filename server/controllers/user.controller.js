@@ -12,25 +12,25 @@ module.exports = {
       .then(() => {
         res.json({ msg: "success!", user: user });
       })
-      .catch(err => res.status(400).json(err));
+      .catch((err) => res.status(400).json(err));
   },
 
   login(req, res) {
-    User.findOne({ email: req.body.email })
-      .then(user => {
+    User.findOne({ username: req.body.username })
+      .then((user) => {
         if (user === null) {
           res.status(400).json({ msg: "invalid login attempt" });
         } else {
           bcrypt
             .compare(req.body.password, user.password)
-            .then(passwordIsValid => {
+            .then((passwordIsValid) => {
               if (passwordIsValid) {
                 res
                   .cookie(
                     "usertoken",
                     jwt.sign({ _id: user._id }, process.env.JWT_SECRET),
                     {
-                      httpOnly: true
+                      httpOnly: true,
                     }
                   )
                   .json({ msg: "success!" });
@@ -38,19 +38,19 @@ module.exports = {
                 res.status(400).json({ msg: "invalid login attempt" });
               }
             })
-            .catch(err =>
+            .catch((err) =>
               res.status(400).json({ msg: "invalid login attempt" })
             );
         }
       })
-      .catch(err => res.json(err));
+      .catch((err) => res.json(err));
   },
 
   logout(req, res) {
     res
       .cookie("usertoken", jwt.sign({ _id: "" }, process.env.JWT_SECRET), {
         httpOnly: true,
-        maxAge: 0
+        maxAge: 0,
       })
       .json({ msg: "ok" });
   },
@@ -64,19 +64,19 @@ module.exports = {
     const decodedJWT = jwt.decode(req.cookies.usertoken, { complete: true });
 
     User.findById(decodedJWT.payload._id)
-      .then(user => res.json(user))
-      .catch(err => res.json(err));
+      .then((user) => res.json(user))
+      .catch((err) => res.json(err));
   },
 
   getAll(req, res) {
     User.find()
-      .then(users => res.json(users))
-      .catch(err => res.json(err));
+      .then((users) => res.json(users))
+      .catch((err) => res.json(err));
   },
 
   getOne(req, res) {
     User.findOne({ _id: req.params.id })
-      .then(user => res.json(user))
-      .catch(err => res.json(err));
-  }
+      .then((user) => res.json(user))
+      .catch((err) => res.json(err));
+  },
 };
