@@ -2,7 +2,14 @@ import React, { useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 import axios from "axios";
 
-const UserList = (props) => {
+// THIS IS USER DASHBOARD WHERE EVERYTHING HAPPENS
+// [] CHANGE TO GET 1 USER ONLY
+// [] RETURN COMPONENT BUTTONS & NAVIGATION
+// [] WRITE REQUEST BUTTON
+// [] VIEW REQUESTS BUTTON
+// [] WRITE AIRPLANE BUTTON
+
+export default (props) => {
   const [users, setUsers] = useState([]);
 
   const getLoggedInUser = () => {
@@ -27,7 +34,7 @@ const UserList = (props) => {
         console.log("not authorized");
         console.log(err);
 
-        navigate("/");
+        navigate("/welcome");
       });
   }, []);
 
@@ -54,5 +61,3 @@ const UserList = (props) => {
     </div>
   );
 };
-
-export default UserList;

@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, navigate, Router } from "@reach/router";
-import { Jumbotron } from "react-bootstrap";
+import axios from "axios";
 import LogReg from "./views/LogReg.jsx";
 import Welcome from "./views/Welcome";
-
-import axios from "axios";
+import UserMain from "./views/UserMain";
+import { Container } from "react-bootstrap";
 
 function App() {
   const logout = () => {
@@ -28,17 +28,16 @@ function App() {
   return (
     <>
       <div className="row">
-        <Jumbotron fluid>
-          <h1>MERN Users</h1>
+        <Container>
           <button onClick={logout}>Logout</button>
-        </Jumbotron>
-      </div>
 
-      <Router>
-        <Welcome path="/welcome" />
-        <LogReg path="/" />
-      </Router>
-      <div className="container"></div>
+          <Router>
+            <UserMain path="/" />
+            <Welcome path="/welcome" />
+            <LogReg path="/login" />
+          </Router>
+        </Container>
+      </div>
     </>
   );
 }

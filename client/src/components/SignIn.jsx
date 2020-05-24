@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { navigate } from "@reach/router";
 
-const SignIn = (props) => {
+export default (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -20,7 +20,7 @@ const SignIn = (props) => {
       )
       .then((res) => {
         console.log(res);
-        navigate("/users");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -56,5 +56,3 @@ const SignIn = (props) => {
     </fieldset>
   );
 };
-
-export default SignIn;

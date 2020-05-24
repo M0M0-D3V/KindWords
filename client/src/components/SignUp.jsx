@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const SignUp = (props) => {
+export default (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -104,5 +104,3 @@ const SignUp = (props) => {
     </fieldset>
   );
 };
-
-export default SignUp;

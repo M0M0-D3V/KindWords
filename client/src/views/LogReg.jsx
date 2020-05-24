@@ -3,7 +3,7 @@ import React from "react";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 
-const LogReg = () => {
+export default () => {
   return (
     <div className="container-flex">
       <SignIn />
@@ -11,5 +11,3 @@ const LogReg = () => {
     </div>
   );
 };
-
-export default LogReg;
