@@ -18,3 +18,6 @@ P2 []: Everything in "/" so that music is uninterrupted
 P2 []: Pretty Animations
 P2 []: Ability to save replies to file in a nice format
 P2 []: Toggle Daytime Theme. HA
+P2 []: Design avatar game feature
+P2 []: Stickers feature or other Thank you Gift idea
+P2 []: OTHERS!
