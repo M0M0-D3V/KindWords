@@ -31,6 +31,9 @@ function App() {
         <h1>MERN Users</h1>
         <button onClick={logout}>Logout</button>
       </div>
+      <div className="stars"></div>
+      <div className="twinkling"></div>
+      <div className="clouds"></div>
       <Router>
         <LogReg path="/" />
         <UserList path="/users" />
