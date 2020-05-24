@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, navigate, Router } from "@reach/router";
-
+import { Jumbotron } from "react-bootstrap";
 import LogReg from "./views/LogReg";
 import UserList from "./views/UserList";
 
@@ -27,12 +27,15 @@ function App() {
 
   return (
     <>
-      <div className="jumbotron">
-        <h1>MERN Users</h1>
-        <button onClick={logout}>Logout</button>
+      <div className="row">
+        <Jumbotron fluid>
+          <h1>MERN Users</h1>
+          <button onClick={logout}>Logout</button>
+        </Jumbotron>
       </div>
 
       <Router>
+        <Welcome path="/welcome" />
         <LogReg path="/" />
         <UserList path="/users" />
       </Router>
