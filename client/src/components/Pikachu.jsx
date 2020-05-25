@@ -5,7 +5,7 @@ export default () => {
   return (
     <div>
       <div className="text-center h-100">
-        <img src={pikachu} alt="pikachu" rounded />
+        <img src={pikachu} alt="pikachu" />
       </div>
       <p style={{ color: "#FFC857", textAlign: "center" }}>
         Kind Words is a place you can come to share about your struggles and

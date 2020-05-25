@@ -1,6 +1,6 @@
 import React from "react";
 import { Jumbotron, Button, Navbar } from "react-bootstrap";
-import { Link, navigate } from "@reach/router";
+import { navigate } from "@reach/router";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 
@@ -18,8 +18,13 @@ export default () => {
         <SignIn />
         <SignUp />
       </Jumbotron>
-      <Button variant="dark">
-        <Link to="/">Go back to main...</Link>
+      <Button
+        variant="dark"
+        onClick={(e) => {
+          navigate("/");
+        }}
+      >
+        Go back to main...
       </Button>
     </div>
   );
