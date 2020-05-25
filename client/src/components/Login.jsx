@@ -9,6 +9,7 @@ export default (props) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const login = (event) => {
+    console.log("something should be here");
     event.preventDefault();
     axios
       .post(
@@ -50,7 +51,9 @@ export default (props) => {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-        <Button className="btn-sm btn-dark">Sign In</Button>
+        <Button type="submit" className="btn-sm btn-dark">
+          Sign In
+        </Button>
         <p className="error-message">{errorMessage ? errorMessage : ""}</p>
       </form>
     </fieldset>

@@ -23,7 +23,7 @@ export default (props) => {
   };
   return (
     <div>
-      <Button onClick={logout} variant="dark">
+      <Button type="submit" onClick={logout} variant="dark">
         Logout
       </Button>
     </div>

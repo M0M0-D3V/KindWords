@@ -121,7 +121,9 @@ export default (props) => {
           ""
         )}
 
-        <Button className="btn-sm btn-dark">Sign Up</Button>
+        <Button type="submit" className="btn-sm btn-dark">
+          Sign Up
+        </Button>
       </form>
     </fieldset>
   );
