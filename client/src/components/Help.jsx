@@ -9,22 +9,38 @@ export default () => {
       </p>
       <p>And there are gamer specific resources. How cool is that?!</p>
       <p>
-        <a href="https://checkpointorg.com/" target="_blank">
+        <a
+          href="https://checkpointorg.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           CheckPointorg
         </a>{" "}
         |{" "}
-        <a href="https://www.takethis.org/" target="_blank">
+        <a
+          href="https://www.takethis.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           TakeThis.org
         </a>
       </p>
       <p>
         Other / USA:
         <br />
-        <a href="https://www.mentalhealth.gov/" target="_blank">
+        <a
+          href="https://www.mentalhealth.gov/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           MentalHealth.gov
         </a>
         <br />
-        <a href="https://suicidepreventionlifeline.org/" target="_blank">
+        <a
+          href="https://suicidepreventionlifeline.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Suicide Prevention LifeLine
         </a>{" "}
         - 1-800-273-8255
