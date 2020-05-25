@@ -3,6 +3,8 @@ import { navigate } from "@reach/router";
 import { Navbar } from "react-bootstrap";
 import axios from "axios";
 
+import LogOut from "../components/LogOut";
+
 // THIS IS USER DASHBOARD WHERE EVERYTHING HAPPENS
 // [] CHANGE TO GET 1 USER ONLY
 // [] RETURN COMPONENT BUTTONS & NAVIGATION
@@ -39,32 +41,14 @@ export default (props) => {
       });
   }, []);
 
-  const logout = () => {
-    axios
-      .post(
-        "http://localhost:9001/api/logout",
-        {},
-        {
-          // need to send the cookie in request so server can clear it
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch(console.log);
-
-    navigate("/");
-  };
-
   return (
     <div className="container">
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">KIND WORDS</Navbar.Brand>
+        <LogOut />
       </Navbar>
-      <button onClick={logout}>Logout</button>
-
-      <h3>All Users:</h3>
+      <h2>HEY YOU MADE IT!</h2>
+      {/* <h3>All Users:</h3>
       <button onClick={getLoggedInUser}>Get Logged In User</button>
       <table>
         <tbody>
@@ -81,7 +65,7 @@ export default (props) => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
     </div>
   );
 };

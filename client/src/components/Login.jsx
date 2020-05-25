@@ -29,30 +29,32 @@ export default (props) => {
   };
 
   return (
-    <fieldset>
-      <legend>Sign In</legend>
-      <form onSubmit={login}>
-        <p className="form-group">
+    <div className="form-group col-md-6">
+      <fieldset>
+        <legend>Login</legend>
+        <form onSubmit={login}>
           <label>Username:</label>
           <input
+            className="form-control"
             type="text"
             name="username"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
             value={username}
           />
-        </p>
-        <p className="form-group">
           <label>Password:</label>
           <input
+            className="form-control"
             type="password"
             name="username"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
-        </p>
-        <Button className="btn-sm btn-dark">Sign In</Button>
-        <p className="error-message">{errorMessage ? errorMessage : ""}</p>
-      </form>
-    </fieldset>
+          <Button className="btn-sm btn-dark">Sign In</Button>
+          <p className="error-message">{errorMessage ? errorMessage : ""}</p>
+        </form>
+      </fieldset>
+    </div>
   );
 };

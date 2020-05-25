@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+var uniqueValidator = require("mongoose-unique-validator");
 const bcrypt = require("bcrypt");
 
 const UserSchema = new mongoose.Schema(
@@ -7,10 +8,13 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: [true, "Username name is required"],
       minlength: [5, "Username must be at least 5 characters long."],
+      // unique property allowed by the uniqueValidator npm
+      unique: [true, "Username must be unique"],
     },
     email: {
       type: String,
       required: [true, "Email is required"],
+      unique: [true, "Username must be unique"],
     },
     password: {
       type: String,
@@ -38,6 +42,8 @@ UserSchema.pre("save", function (next) {
     next();
   });
 });
+// applying plugin to validate uniqueness
+UserSchema.plugin(uniqueValidator);
 
 const User = mongoose.model("User", UserSchema);
 

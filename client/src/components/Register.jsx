@@ -8,6 +8,9 @@ export default (props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
+  // variables for front end validation
+  // const [usernameError, setUserNameError] = useState(true);
+  // const [passwordError, setPasswordError] = useState(true);
 
   const register = (event) => {
     event.preventDefault();
@@ -33,63 +36,83 @@ export default (props) => {
       });
   };
 
-  return (
-    <fieldset>
-      <legend>Sign Up</legend>
+  const nameChange = (e) => {
+    setUsername(e.target.value);
+    // e.garget.value.length < 5
+    // ? setUserNameError(true)
+    // : setUserNameError(false);
+  };
 
-      <form onSubmit={register}>
-        <div className="form-group">
+  const emailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const passwordChange = (e) => {
+    setPassword(e.target.value);
+    // e.target.value.length < 8
+    //   ? setPasswordError(true)
+    //   : setPasswordError(false);
+  };
+
+  return (
+    <div className="form-group col-md-6">
+      <fieldset>
+        <legend>Register</legend>
+
+        <form onSubmit={register}>
           <label>Username:</label>
           <input
+            className="form-control"
             type="text"
             name="username"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={nameChange}
             value={username}
+            required
           />
           {errors.username ? (
             <span className="error-message">{errors.username.message}</span>
           ) : (
             ""
           )}
-        </div>
 
-        <div className="form-group">
           <label>Email:</label>
           <input
+            className="form-control"
             type="email"
             name="email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={emailChange}
             value={email}
+            required
           />
           {errors.email ? (
             <span className="error-message">{errors.email.message}</span>
           ) : (
             ""
           )}
-        </div>
 
-        <div className="form-group">
           <label>Password:</label>
           <input
+            className="form-control"
             type="password"
-            name="email"
+            name="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+            required
           />
           {errors.password ? (
             <span className="error-message">{errors.password.message}</span>
           ) : (
             ""
           )}
-        </div>
 
-        <div className="form-group">
           <label>Confirm Password:</label>
           <input
+            className="form-control"
             type="password"
             name="confirmPassword"
             onChange={(e) => setConfirmPassword(e.target.value)}
             value={confirmPassword}
+            required
           />
           {errors.confirmPassword ? (
             <span className="error-message">
@@ -98,10 +121,10 @@ export default (props) => {
           ) : (
             ""
           )}
-        </div>
 
-        <Button className="btn-sm btn-dark">Sign Up</Button>
-      </form>
-    </fieldset>
+          <Button className="btn-sm btn-dark">Sign Up</Button>
+        </form>
+      </fieldset>
+    </div>
   );
 };

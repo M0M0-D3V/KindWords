@@ -1,8 +1,8 @@
 import React from "react";
 import { Jumbotron, Button, Navbar } from "react-bootstrap";
 import { navigate } from "@reach/router";
-import SignIn from "../components/SignIn";
-import SignUp from "../components/SignUp";
+import Login from "../components/Login";
+import Register from "../components/Register";
 
 export default () => {
   return (
@@ -15,8 +15,10 @@ export default () => {
         </h3>
       </Navbar>
       <Jumbotron className="bg-transparent">
-        <SignIn />
-        <SignUp />
+        <div className="container-flex">
+          <Login />
+          <Register />
+        </div>
       </Jumbotron>
       <Button
         variant="dark"
