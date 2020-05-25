@@ -55,76 +55,74 @@ export default (props) => {
   };
 
   return (
-    <div className="form-group col-md-6">
-      <fieldset>
-        <legend>Register</legend>
+    <fieldset>
+      <legend>Register</legend>
 
-        <form onSubmit={register}>
-          <label>Username:</label>
-          <input
-            className="form-control"
-            type="text"
-            name="username"
-            onChange={nameChange}
-            value={username}
-            required
-          />
-          {errors.username ? (
-            <span className="error-message">{errors.username.message}</span>
-          ) : (
-            ""
-          )}
+      <form onSubmit={register}>
+        <label>Username:</label>
+        <input
+          className="form-control"
+          type="text"
+          name="username"
+          onChange={nameChange}
+          value={username}
+          required
+        />
+        {errors.username ? (
+          <span className="error-message">{errors.username.message}</span>
+        ) : (
+          ""
+        )}
 
-          <label>Email:</label>
-          <input
-            className="form-control"
-            type="email"
-            name="email"
-            onChange={emailChange}
-            value={email}
-            required
-          />
-          {errors.email ? (
-            <span className="error-message">{errors.email.message}</span>
-          ) : (
-            ""
-          )}
+        <label>Email:</label>
+        <input
+          className="form-control"
+          type="email"
+          name="email"
+          onChange={emailChange}
+          value={email}
+          required
+        />
+        {errors.email ? (
+          <span className="error-message">{errors.email.message}</span>
+        ) : (
+          ""
+        )}
 
-          <label>Password:</label>
-          <input
-            className="form-control"
-            type="password"
-            name="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            required
-          />
-          {errors.password ? (
-            <span className="error-message">{errors.password.message}</span>
-          ) : (
-            ""
-          )}
+        <label>Password:</label>
+        <input
+          className="form-control"
+          type="password"
+          name="password"
+          onChange={passwordChange}
+          value={password}
+          required
+        />
+        {errors.password ? (
+          <span className="error-message">{errors.password.message}</span>
+        ) : (
+          ""
+        )}
 
-          <label>Confirm Password:</label>
-          <input
-            className="form-control"
-            type="password"
-            name="confirmPassword"
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            value={confirmPassword}
-            required
-          />
-          {errors.confirmPassword ? (
-            <span className="error-message">
-              {errors.confirmPassword.message}
-            </span>
-          ) : (
-            ""
-          )}
+        <label>Confirm Password:</label>
+        <input
+          className="form-control"
+          type="password"
+          name="confirmPassword"
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          value={confirmPassword}
+          required
+        />
+        {errors.confirmPassword ? (
+          <span className="error-message">
+            {errors.confirmPassword.message}
+          </span>
+        ) : (
+          ""
+        )}
 
-          <Button className="btn-sm btn-dark">Sign Up</Button>
-        </form>
-      </fieldset>
-    </div>
+        <Button className="btn-sm btn-dark">Sign Up</Button>
+      </form>
+    </fieldset>
   );
 };

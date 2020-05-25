@@ -15,15 +15,6 @@ import LogOut from "../components/LogOut";
 export default (props) => {
   const [users, setUsers] = useState([]);
 
-  const getLoggedInUser = () => {
-    axios
-      .get("http://localhost:9001/api/users/loggedin", {
-        withCredentials: true,
-      })
-      .then((res) => console.log(res))
-      .catch(console.log);
-  };
-
   useEffect(() => {
     axios
       .get("http://localhost:9001/api/users", {
@@ -40,6 +31,15 @@ export default (props) => {
         navigate("/welcome");
       });
   }, []);
+
+  // const getLoggedInUser = () => {
+  //   axios
+  //     .get("http://localhost:9001/api/users/loggedin", {
+  //       withCredentials: true,
+  //     })
+  //     .then((res) => console.log(res))
+  //     .catch(console.log);
+  // };
 
   return (
     <div className="container">

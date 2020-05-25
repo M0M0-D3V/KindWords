@@ -29,32 +29,30 @@ export default (props) => {
   };
 
   return (
-    <div className="form-group col-md-6">
-      <fieldset>
-        <legend>Login</legend>
-        <form onSubmit={login}>
-          <label>Username:</label>
-          <input
-            className="form-control"
-            type="text"
-            name="username"
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-            value={username}
-          />
-          <label>Password:</label>
-          <input
-            className="form-control"
-            type="password"
-            name="username"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-          />
-          <Button className="btn-sm btn-dark">Sign In</Button>
-          <p className="error-message">{errorMessage ? errorMessage : ""}</p>
-        </form>
-      </fieldset>
-    </div>
+    <fieldset>
+      <legend>Login</legend>
+      <form onSubmit={login}>
+        <label>Username:</label>
+        <input
+          className="form-control"
+          type="text"
+          name="username"
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+          value={username}
+        />
+        <label>Password:</label>
+        <input
+          className="form-control"
+          type="password"
+          name="username"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+        />
+        <Button className="btn-sm btn-dark">Sign In</Button>
+        <p className="error-message">{errorMessage ? errorMessage : ""}</p>
+      </form>
+    </fieldset>
   );
 };
