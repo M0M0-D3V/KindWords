@@ -9,6 +9,8 @@ import Privacy from "../components/Privacy";
 import WriteRequest from "../components/WriteRequest";
 import Respond from "../components/Respond";
 
+// [] - WOULD BE NICE TO TURN THESE LINK DISPLAYS INTO BOOTSTRAP MODALS!!
+
 export default () => {
   const [view, setView] = useState(0);
 

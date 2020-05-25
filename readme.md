@@ -1,4 +1,4 @@
-P0 []: Resource Links and User conduct info
+P0 [x]: Resource Links and User conduct info
 P0 [x]: Login/Reg
 P0 []: Socket to have live connection and see airplanes
 P0 []: Request System- Make Request, and View Requests and write Replies
