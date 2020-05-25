@@ -1,27 +1,81 @@
-import React from "react";
-import { Jumbotron, Container } from "react-bootstrap";
+import React, { useState } from "react";
+import { Navbar, Container, Button, Overlay } from "react-bootstrap";
+import { Link, navigate } from "@reach/router";
+// [] - OVERLAY ANIMATION (BOOTSTRAP) TO DISPLAY LOGIN/REG FORMS WHEN LINK IS CLICKED INSTEAD OF NAVIGATING TO /LOGIN
 
-import pikachu from "../img/pikachu.png";
+import Pikachu from "../components/Pikachu";
+import Help from "../components/Help";
+import Privacy from "../components/Privacy";
+import WriteRequest from "../components/WriteRequest";
+import Respond from "../components/Respond";
 
 export default () => {
+  const [view, setView] = useState(0);
+
   return (
-    <div>
-      <Container>
-        <Jumbotron>
-          {/* < */}
-          <h2 style={{ color: "#FFC857" }}>WELCOME TO KIND WORDS!</h2>
-          <img
-            src={pikachu}
-            alt="pikachu"
-            style={{ textAlign: "center", display: "block" }}
-          />
-          <p style={{ color: "#FFC857", textAlign: "center" }}>
-            Kind Words is a place you can come to share about your struggles and
-            pains as well as helping others in their own struggles too.
-          </p>
-          {/*  */}
-        </Jumbotron>
-      </Container>
+    <div className="text-center">
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="/">KIND WORDS</Navbar.Brand>
+        <Button
+          variant="secondary"
+          onClick={(e) => {
+            navigate("/login");
+          }}
+        >
+          Login or Register here!
+        </Button>
+      </Navbar>
+      <h2 style={{ color: "#FFC857", textAlign: "center" }}>
+        WELCOME TO KIND WORDS!
+      </h2>
+      {view === 0 ? (
+        <Pikachu />
+      ) : view === 1 ? (
+        <Help />
+      ) : view === 2 ? (
+        <Privacy />
+      ) : view === 3 ? (
+        <WriteRequest />
+      ) : view === 4 ? (
+        <Respond />
+      ) : (
+        <p></p>
+      )}
+      <Button
+        variant="info"
+        onClick={(e) => {
+          setView(1);
+        }}
+      >
+        Help Resources
+      </Button>
+      {"        "}
+      <Button
+        variant="info"
+        onClick={(e) => {
+          setView(2);
+        }}
+      >
+        Privacy
+      </Button>
+      {"        "}
+      <Button
+        variant="info"
+        onClick={(e) => {
+          setView(3);
+        }}
+      >
+        Writing Requests
+      </Button>
+      {"        "}
+      <Button
+        variant="info"
+        onClick={(e) => {
+          setView(4);
+        }}
+      >
+        Writing Responses
+      </Button>
     </div>
   );
 };
