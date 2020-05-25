@@ -4,7 +4,7 @@ import pikachu from "../img/pikachu.png";
 export default () => {
   return (
     <div>
-      <div className="text-center">
+      <div className="text-center h-100">
         <img src={pikachu} alt="pikachu" rounded />
       </div>
       <p style={{ color: "#FFC857", textAlign: "center" }}>

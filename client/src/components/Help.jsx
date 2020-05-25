@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "@reach/router";
 export default () => {
   return (
-    <div>
+    <div className="h-100">
       <p className="lead">
         Don't be afraid to ask for help! These sites have a wide range of
         resources to help you take care of yourself. From people to talk to, to

@@ -1,7 +1,7 @@
 import React from "react";
 export default () => {
   return (
-    <div>
+    <div className="h-100">
       <p className="lead">
         When responding to someone who has stated a problem they are facing,
         you've got options!

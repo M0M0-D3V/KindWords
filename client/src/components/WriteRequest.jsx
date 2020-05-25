@@ -1,7 +1,7 @@
 import React from "react";
 export default () => {
   return (
-    <div>
+    <div className="h-100">
       <p className="lead">
         It can be hard to share your problems! Sometimes the pain is clear and
         other times you don't really understand why you're upset. Go ahead and
@@ -13,7 +13,7 @@ export default () => {
         <br />- Describe your own behaviors that you don't like.
       </p>
       <p>
-        Please rememember, protect yoruself from strangers online by not sharing
+        Please remember, protect yoruself from strangers online by not sharing
         your information that could identify you.
       </p>
     </div>

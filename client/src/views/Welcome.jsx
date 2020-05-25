@@ -15,7 +15,7 @@ export default () => {
   const [view, setView] = useState(0);
 
   return (
-    <div className="text-center">
+    <div style={{ height: "650px" }} className=" container text-center">
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">KIND WORDS</Navbar.Brand>
         <Button

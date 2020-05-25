@@ -2,7 +2,7 @@ import React from "react";
 
 export default () => {
   return (
-    <div>
+    <div className="h-100">
       <p className="lead">
         Your privacy is important to us and so is maintaining a safe community.
         All messages are stored on a secure server and will not be exposd or
