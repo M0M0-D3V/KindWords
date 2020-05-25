@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Button } from "react-bootstrap";
 
 export default (props) => {
   const [username, setUsername] = useState("");
@@ -99,7 +100,7 @@ export default (props) => {
           )}
         </div>
 
-        <input type="submit" value="Sign Up" className="btn" />
+        <Button className="btn-sm btn-dark">Sign Up</Button>
       </form>
     </fieldset>
   );

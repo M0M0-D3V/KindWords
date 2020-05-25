@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Navbar, Container, Button, Overlay } from "react-bootstrap";
-import { Link, navigate } from "@reach/router";
+import { Navbar, Button, Overlay } from "react-bootstrap";
+import { navigate } from "@reach/router";
 // [] - OVERLAY ANIMATION (BOOTSTRAP) TO DISPLAY LOGIN/REG FORMS WHEN LINK IS CLICKED INSTEAD OF NAVIGATING TO /LOGIN
 
 import Pikachu from "../components/Pikachu";

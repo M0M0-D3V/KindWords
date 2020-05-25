@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, navigate, Router } from "@reach/router";
-import axios from "axios";
+import { Router } from "@reach/router";
 import LogReg from "./views/LogReg.jsx";
 import Welcome from "./views/Welcome";
 import UserMain from "./views/UserMain";

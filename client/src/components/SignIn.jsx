@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Button } from "react-bootstrap";
 import axios from "axios";
 import { navigate } from "@reach/router";
 
@@ -50,7 +50,7 @@ export default (props) => {
             value={password}
           />
         </p>
-        <input type="submit" value="Sign In" className="btn" />
+        <Button className="btn-sm btn-dark">Sign In</Button>
         <p className="error-message">{errorMessage ? errorMessage : ""}</p>
       </form>
     </fieldset>
