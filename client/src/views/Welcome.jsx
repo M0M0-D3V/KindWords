@@ -18,6 +18,9 @@ export default () => {
     <div style={{ height: "650px" }} className=" container text-center">
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">KIND WORDS</Navbar.Brand>
+        <h2 style={{ color: "#FFC857", textAlign: "center" }}>
+          WELCOME TO KIND WORDS!
+        </h2>
         <Button
           variant="secondary"
           onClick={(e) => {
@@ -27,9 +30,7 @@ export default () => {
           Login or Register here!
         </Button>
       </Navbar>
-      <h2 style={{ color: "#FFC857", textAlign: "center" }}>
-        WELCOME TO KIND WORDS!
-      </h2>
+
       {view === 0 ? (
         <Pikachu />
       ) : view === 1 ? (

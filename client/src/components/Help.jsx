@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "@reach/router";
 export default () => {
   return (
     <div className="h-100">
@@ -10,17 +9,24 @@ export default () => {
       </p>
       <p>And there are gamer specific resources. How cool is that?!</p>
       <p>
-        <Link to="https://checkpointorg.com/">CheckPointorg</Link> |{" "}
-        <Link to="https://www.takethis.org/">TakeThis.org</Link>
+        <a href="https://checkpointorg.com/" target="_blank">
+          CheckPointorg
+        </a>{" "}
+        |{" "}
+        <a href="https://www.takethis.org/" target="_blank">
+          TakeThis.org
+        </a>
       </p>
       <p>
         Other / USA:
         <br />
-        <Link to="https://www.mentalhealth.gov/">MentalHealth.gov</Link>
+        <a href="https://www.mentalhealth.gov/" target="_blank">
+          MentalHealth.gov
+        </a>
         <br />
-        <Link to="https://suicidepreventionlifeline.org/">
+        <a href="https://suicidepreventionlifeline.org/" target="_blank">
           Suicide Prevention LifeLine
-        </Link>{" "}
+        </a>{" "}
         - 1-800-273-8255
       </p>
     </div>
