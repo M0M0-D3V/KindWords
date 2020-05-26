@@ -18,7 +18,6 @@ export default (props) => {
         console.log(res);
       })
       .catch(console.log);
-
     navigate("/");
   };
   return (
