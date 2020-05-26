@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 // [] COPIED OVER FROM TEAM MANAGER NEED TO CHANGE VARIABLES
+//  AHAHAHHA MONICA IS A LAZY DEVELOPER
 
 export default ({ onSubmitProp, errors, initName, initPreferredPosition }) => {
   const [name, setName] = useState(initName);
