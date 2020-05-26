@@ -33,8 +33,10 @@ export default (props) => {
   };
 
   const firstInitial = (name) => {
+    // [] NEED FIRST INITIAL TO WORK FOR PRIVACY
     return name;
-    // return name.charAt(0).toUpperCase();
+    // .charAt(0);  why won't this work!??!?!
+    // .toUpperCase();
   };
   return (
     <div className="container">
