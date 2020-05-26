@@ -53,5 +53,51 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script>
+      window.onSpotifyWebPlaybackSDKReady = () => {
+        const token =
+          "BQBO7ay6oPHCusmpPMqYpKg1M2KAqLZf5vB8gj1QTCu8Prml0g2h7vVro29vw0j2V8BXhkapFKHyamxVNsFqp-ADCEk2cIbqLOUClL8vi8duwll6T8hkVP-UDBY_9sMoVK-CDci9jwyP0ODgq0LzoQ_ROIPkXMI60t4";
+        const player = new Spotify.Player({
+          name: "Web Playback SDK Quick Start Player",
+          getOAuthToken: (cb) => {
+            cb(token);
+          },
+        });
+
+        // Error handling
+        player.addListener("initialization_error", ({ message }) => {
+          console.error(message);
+        });
+        player.addListener("authentication_error", ({ message }) => {
+          console.error(message);
+        });
+        player.addListener("account_error", ({ message }) => {
+          console.error(message);
+        });
+        player.addListener("playback_error", ({ message }) => {
+          console.error(message);
+        });
+
+        // Playback status updates
+        player.addListener("player_state_changed", (state) => {
+          console.log(state);
+        });
+
+        // Ready
+        player.addListener("ready", ({ device_id }) => {
+          console.log("Ready with Device ID", device_id);
+        });
+
+        // Not Ready
+        player.addListener("not_ready", ({ device_id }) => {
+          console.log("Device ID has gone offline", device_id);
+        });
+
+        // Connect to the player!
+        player.connect();
+      };
+    </script>
   </body>
 </html>
