@@ -26,6 +26,9 @@ const RequestSchema = new mongoose.Schema(
         respondBy: String,
         minlength: [8, minlengthMsg],
         maxlength: [255, "Max length is 255 characters."],
+        meta: {
+          flags: Number,
+        },
       },
     ],
   },
