@@ -5,7 +5,7 @@ P0 []: Request System- Make Request, and View Requests and write Replies
 P0 []: Inbox to receive and view Replies
 P0 [x]: Starfield and general colors picked
 
-P1 []: Airplanes have lifespan of 1 hour and does not save to db
+P1 []: Airplanes have lifespan of 1 hour and autodeletes from db
 P1 []: COLOR PALETTE FIX
 P1 []: Delete Requests with confirmations
 P1 []: See Request History
