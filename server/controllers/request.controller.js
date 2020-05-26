@@ -25,14 +25,14 @@ module.exports = {
   },
 
   // UPDATE: Update one Request by id, re-running validators on any changed fields
-  //   update(req, res) {
-  //     Request.findByIdAndUpdate(req.params.id, req.body, {
-  //       runValidators: true,
-  //       new: true,
-  //     })
-  //       .then((updatedPlayer) => res.json(updatedPlayer))
-  //       .catch((err) => res.status(400).json(err));
-  //   },
+  update(req, res) {
+    Request.findByIdAndUpdate(req.params.id, req.body, {
+      runValidators: true,
+      new: true,
+    })
+      .then((updatedRequest) => res.json(updatedRequest))
+      .catch((err) => res.status(400).json(err));
+  },
 
   // DESTROY: Delete one Request by id
   delete(req, res) {

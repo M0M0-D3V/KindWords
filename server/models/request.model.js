@@ -13,8 +13,12 @@ const RequestSchema = new mongoose.Schema(
     },
     requestBy: String,
     hidden: Boolean,
+    meta: {
+      flags: Number,
+    },
 
     // Response is from others who have Viewed the Request and are writing a letter back to Requestor..
+    // Response will be sent via axios.put to update an existing Request.
     response: [
       {
         body: String,

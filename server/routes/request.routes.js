@@ -6,7 +6,7 @@ module.exports = (app) => {
   app.post("/api/requests/new", RequestController.create);
   app.get("/api/requests/", RequestController.getAll);
   app.get("/api/requests/:id", RequestController.getOne);
-  //   app.put("/api/requests/update/:id", RequestController.update);
+  app.put("/api/requests/update/:id", RequestController.update);
   app.delete("/api/requests/delete/:id", RequestController.delete);
 };
 
