@@ -9,7 +9,6 @@ export default (props) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const login = (event) => {
-    console.log("something should be here");
     event.preventDefault();
     axios
       .post(

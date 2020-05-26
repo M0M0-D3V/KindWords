@@ -8,5 +8,6 @@ module.exports = (app) => {
 
   // this route now has to be authenticated
   app.get("/api/users", authenticate, userController.getAll);
+  app.get("/api/user", authenticate, userController.getOne);
   app.get("/api/users/loggedin", authenticate, userController.getLoggedInUser);
 };
