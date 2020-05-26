@@ -18,6 +18,7 @@ import WriteAirplane from "../components/WriteAirplane";
 
 export default (props) => {
   const [view, setView] = useState(0);
+  const [modalShow, setModalShow] = useState(false);
 
   // const [user, setUser] = useState([]);
 
@@ -45,6 +46,7 @@ export default (props) => {
         variant="info"
         onClick={(e) => {
           setView(1);
+          setModalShow(true);
         }}
       >
         Make a Request
@@ -53,6 +55,7 @@ export default (props) => {
         variant="info"
         onClick={(e) => {
           setView(2);
+          setModalShow(true);
         }}
       >
         View Requests
@@ -61,6 +64,7 @@ export default (props) => {
         variant="info"
         onClick={(e) => {
           setView(3);
+          setModalShow(true);
         }}
       >
         Send a Happy Thought!
@@ -68,11 +72,11 @@ export default (props) => {
       {view === 0 ? (
         <Dragonite />
       ) : view === 1 ? (
-        <NewRequest />
+        <NewRequest show={modalShow} onHide={(e) => setModalShow(false)} />
       ) : view === 2 ? (
-        <ViewRequests />
+        <ViewRequests show={modalShow} onHide={(e) => setModalShow(false)} />
       ) : view === 3 ? (
-        <WriteAirplane />
+        <WriteAirplane show={modalShow} onHide={(e) => setModalShow(false)} />
       ) : (
         <p></p>
       )}
