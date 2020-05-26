@@ -10,7 +10,7 @@ export default () => {
       <p style={{ color: "#FFC857", textAlign: "center" }}>
         Kind Words is a place you can come to share about your struggles and
         pains as well as helping others in their own struggles too. Below are
-        some resources to help guide you. //test
+        some resources to help guide you.
       </p>
     </div>
   );

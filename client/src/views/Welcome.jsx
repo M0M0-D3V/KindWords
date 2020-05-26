@@ -14,6 +14,7 @@ import LoggedUser from "../components/LoggedUser";
 
 export default () => {
   const [view, setView] = useState(0);
+  const [modalShow, setModalShow] = useState(false);
 
   return (
     <div style={{ height: "650px" }} className=" container text-center">
@@ -38,13 +39,13 @@ export default () => {
       {view === 0 ? (
         <Pikachu />
       ) : view === 1 ? (
-        <Help />
+        <Help show={modalShow} onHide={(e) => setModalShow(false)} />
       ) : view === 2 ? (
-        <Privacy />
+        <Privacy show={modalShow} onHide={(e) => setModalShow(false)} />
       ) : view === 3 ? (
-        <WriteRequest />
+        <WriteRequest show={modalShow} onHide={(e) => setModalShow(false)} />
       ) : view === 4 ? (
-        <Respond />
+        <Respond show={modalShow} onHide={(e) => setModalShow(false)} />
       ) : (
         <p></p>
       )}
@@ -52,6 +53,7 @@ export default () => {
         variant="info"
         onClick={(e) => {
           setView(1);
+          setModalShow(true);
         }}
       >
         Help Resources
@@ -61,6 +63,7 @@ export default () => {
         variant="info"
         onClick={(e) => {
           setView(2);
+          setModalShow(true);
         }}
       >
         Privacy
@@ -70,6 +73,7 @@ export default () => {
         variant="info"
         onClick={(e) => {
           setView(3);
+          setModalShow(true);
         }}
       >
         Writing Requests
@@ -79,6 +83,7 @@ export default () => {
         variant="info"
         onClick={(e) => {
           setView(4);
+          setModalShow(true);
         }}
       >
         Writing Responses
