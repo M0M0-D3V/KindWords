@@ -8,6 +8,7 @@ import Help from "../components/Help";
 import Privacy from "../components/Privacy";
 import WriteRequest from "../components/WriteRequest";
 import Respond from "../components/Respond";
+import LoggedUser from "../components/LoggedUser";
 
 // [] - WOULD BE NICE TO TURN THESE LINK DISPLAYS INTO BOOTSTRAP MODALS!!
 
@@ -16,6 +17,9 @@ export default () => {
 
   return (
     <div style={{ height: "650px" }} className=" container text-center">
+      {/* need to fix LoggedUser to flag if logged in... */}
+      <LoggedUser />
+
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">KIND WORDS</Navbar.Brand>
         <h2 style={{ color: "#FFC857", textAlign: "center" }}>

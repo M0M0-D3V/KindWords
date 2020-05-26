@@ -16,9 +16,9 @@ export default (props) => {
       )
       .then((res) => {
         console.log(res);
+        navigate("/welcome");
       })
       .catch(console.log);
-    navigate("/");
   };
   return (
     <div>
