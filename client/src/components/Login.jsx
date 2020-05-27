@@ -23,7 +23,7 @@ export default (props) => {
         navigate("/");
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response);
         setErrorMessage(err.response.data.msg);
       });
   };

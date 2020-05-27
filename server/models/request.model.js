@@ -21,11 +21,13 @@ const RequestSchema = new mongoose.Schema(
     // Response will be sent via axios.put to update an existing Request.
     response: [
       {
-        body: String,
+        body: {
+          type: String,
+          minlength: [8, minlengthMsg],
+          maxlength: [255, "Max length is 255 characters."],
+        },
         date: Date,
         respondBy: String,
-        minlength: [8, minlengthMsg],
-        maxlength: [255, "Max length is 255 characters."],
         meta: {
           flags: Number,
         },

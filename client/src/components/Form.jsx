@@ -17,6 +17,7 @@ export default ({ onSubmitProp, errors }) => {
   };
 
   const onSubmitHandler = (e) => {
+    console.log("this is event" + " " + e.response);
     e.preventDefault();
     onSubmitProp({ request, requestBy });
   };
@@ -47,9 +48,7 @@ export default ({ onSubmitProp, errors }) => {
             <p className="lead" style={{ color: "orange" }}>
               Write at least 8 characters.
             </p>
-            <button disabled={true} className="btn btn-success btn-sm">
-              Send
-            </button>
+            <button className="btn btn-success btn-sm">Send</button>
           </>
         ) : (
           <button className="btn btn-success btn-sm">Send!</button>

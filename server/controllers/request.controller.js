@@ -12,9 +12,10 @@ module.exports = {
 
   // READ: Get all Authors
   getAll(req, res) {
+    console.log("hello i am alive");
     // Blank .find param gets all
-    Request.find({})
-      .then((requests) => res.json(requests))
+    Request.find()
+      .then((allRequests) => res.json({ requests: allRequests }))
       .catch((err) => res.status(400).json(err));
   },
   // READ: Get one Request by id
