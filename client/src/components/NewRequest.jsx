@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Form from "../components/Form";
-import { Link, navigate } from "@reach/router";
+import { navigate } from "@reach/router";
 import { Button, Modal } from "react-bootstrap";
 
 import Dragonite from "../components/Dragonite";

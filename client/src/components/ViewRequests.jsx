@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button, Modal } from "react-bootstrap";
-import { Link, navigate } from "@reach/router";
 
 import Dragonite from "../components/Dragonite";
 // import DeleteButton from "./DeleteButton";
@@ -10,19 +9,22 @@ import Dragonite from "../components/Dragonite";
 // HAHAHAHAHAHAHAHA
 
 export default (props) => {
-  //   useEffect(() => {
-  //     axios
-  //       .get("http://localhost:9001/api/requests")
-  //       .then((res) => {
-  //         setPlayers(res.data);
-  //         setLoaded(true);
-  //       })
-  //       .catch((err) => console.log("Error: ", err));
-  //   }, []);
+  const [requests, setRequests] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
-  //   useEffect(() => {
-  //     data.setRequests(data.requests);
-  //   }, [data]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:9001/api/requests")
+      .then((res) => {
+        setRequests(res.data);
+        setLoaded(true);
+      })
+      .catch((err) => console.log("Error: ", err));
+  }, []);
+
+  useEffect(() => {
+    props.data.setRequests(props.data.requests);
+  }, [props.data]);
 
   // const removeFromDom = (requestID) => {
   //   data.setRequests(
@@ -51,6 +53,10 @@ export default (props) => {
               <br />
               Maybe you can something nice to them?
             </h5>
+            <p>Placeholder for Request lorem ipsums and 3 buttons below</p>
+            <Button variant="outline-dark">Previous</Button>
+            <Button variant="outline-dark">Reply</Button>
+            <Button variant="outline-dark">Next</Button>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="info" onClick={props.onHide}>

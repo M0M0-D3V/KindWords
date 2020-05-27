@@ -8,7 +8,6 @@ import Help from "../components/Help";
 import Privacy from "../components/Privacy";
 import WriteRequest from "../components/WriteRequest";
 import Respond from "../components/Respond";
-import LoggedUser from "../components/LoggedUser";
 
 // [] - WOULD BE NICE TO TURN THESE LINK DISPLAYS INTO BOOTSTRAP MODALS!!
 
