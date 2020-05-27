@@ -12,9 +12,9 @@ import WriteAirplane from "../components/WriteAirplane";
 // THIS IS USER DASHBOARD WHERE EVERYTHING HAPPENS
 // [x] CHANGE TO GET 1 USER ONLY
 // [] RETURN COMPONENT BUTTONS & NAVIGATION
-// [] WRITE REQUEST BUTTON
-// [] VIEW REQUESTS BUTTON
-// [] WRITE AIRPLANE BUTTON
+// [x] WRITE REQUEST BUTTON
+// [x] VIEW REQUESTS BUTTON
+// [x] WRITE AIRPLANE BUTTON
 
 export default (props) => {
   const [view, setView] = useState(0);

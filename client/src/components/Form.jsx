@@ -25,6 +25,7 @@ export default ({ onSubmitProp, errors }) => {
           <Form.Control
             as="textarea"
             rows="10"
+            size="lg"
             placeholder="Write here..."
             value={request}
             onChange={onRequestChange}
