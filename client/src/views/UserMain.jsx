@@ -41,7 +41,7 @@ export default (props) => {
     // [] NEED FIRST INITIAL TO WORK FOR PRIVACY
     return name;
     // const temp = name;
-    // temp.charAt(0);  why won't this work!??!?!
+    // temp.charAt(0);  //why won't this work!??!?!
     // .toUpperCase();
   };
   return (

@@ -4,6 +4,8 @@ import { Form } from "react-bootstrap";
 // [] COPIED OVER FROM TEAM MANAGER NEED TO CHANGE VARIABLES
 //  AHAHAHHA MONICA IS A LAZY DEVELOPER
 
+// [] SEND USERID TO ONSUBMITPROP FOR REQUESTBY
+
 export default ({ onSubmitProp, errors }) => {
   const [request, setRequest] = useState("");
   const [requestBy, setRequestBy] = useState("");
