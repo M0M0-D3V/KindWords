@@ -23,7 +23,7 @@ export default (props) => {
           <Modal.Title id="contained-modal-title-vcenter">Privacy</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p className="lead">
+          <p>
             Your privacy is important to us and so is maintaining a safe
             community. All messages are stored on a secure server and will not
             be exposed or used for any purposes outside of Kind Words. However,
