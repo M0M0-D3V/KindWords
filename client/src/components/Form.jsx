@@ -6,6 +6,7 @@ import { Form } from "react-bootstrap";
 
 export default ({ onSubmitProp, errors }) => {
   const [request, setRequest] = useState("");
+  const [requestBy, setRequestBy] = useState("");
   const [requestError, setRequestError] = useState(true);
 
   const onRequestChange = (e) => {
@@ -15,7 +16,7 @@ export default ({ onSubmitProp, errors }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    onSubmitProp({ request });
+    onSubmitProp({ request, requestBy });
   };
 
   return (

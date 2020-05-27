@@ -102,11 +102,23 @@ export default (props) => {
       {view === 0 ? (
         <Dragonite />
       ) : view === 1 ? (
-        <NewRequest show={modalShow} onHide={(e) => setModalShow(false)} />
+        <NewRequest
+          user={user}
+          show={modalShow}
+          onHide={(e) => setModalShow(false)}
+        />
       ) : view === 2 ? (
-        <ViewRequests show={modalShow} onHide={(e) => setModalShow(false)} />
+        <ViewRequests
+          user={user}
+          show={modalShow}
+          onHide={(e) => setModalShow(false)}
+        />
       ) : view === 3 ? (
-        <WriteAirplane show={modalShow} onHide={(e) => setModalShow(false)} />
+        <WriteAirplane
+          user={user}
+          show={modalShow}
+          onHide={(e) => setModalShow(false)}
+        />
       ) : (
         <p></p>
       )}
