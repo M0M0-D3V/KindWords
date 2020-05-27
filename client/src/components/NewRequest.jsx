@@ -19,18 +19,14 @@ export default () => {
 
   return (
     <div className="h-100">
-      <h5>
-        <Link to="/requests/list">List</Link> |{" "}
-        <Link to="/requests/addplayer">Add Player</Link>
-      </h5>
-      <p className="lead">Add Player</p>
-      <Form
-        onSubmitProp={createRequest}
-        initName=""
-        initPreferredPosition=""
-        errors={errors}
-      />
-      <Link to={"/"}>Cancel</Link>
+      <div className="container">
+        <h5>
+          What are you worried about?
+          <br />
+          Maybe someone else is too?
+        </h5>
+      </div>
+      <Form onSubmitProp={createRequest} errors={errors} />
     </div>
   );
 };

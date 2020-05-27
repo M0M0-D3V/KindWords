@@ -6,9 +6,9 @@ import { Link, navigate } from "@reach/router";
 // HAHAHAHAHAHAHAHA
 
 export default ({ data }) => {
-  useEffect(() => {
-    data.setRequests(data.requests);
-  }, [data]);
+  // useEffect(() => {
+  //   data.setRequests(data.requests);
+  // }, [data]);
 
   // const removeFromDom = (requestID) => {
   //   data.setRequests(

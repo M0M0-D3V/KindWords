@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { navigate } from "@reach/router";
-import { Navbar, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import axios from "axios";
 
 import Dragonite from "../components/Dragonite";
