@@ -12,7 +12,7 @@ export default (props) => {
 
   // Called back from Form, creates new request in DB
   const createRequest = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const newRequest = {
       request: request,
     };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { navigate } from "@reach/router";
 import { Button } from "react-bootstrap";
 import axios from "axios";
+import song from "../audio/lofiplaylist.mp3";
 
 import Dragonite from "../components/Dragonite";
 import LoggedUser from "../components/LoggedUser";
@@ -61,6 +62,9 @@ export default (props) => {
       ) : (
         <p></p>
       )}
+      <audio controls autoPlay>
+        <source src={song} type="audio/mpeg"></source>
+      </audio>
     </div>
   );
 };
