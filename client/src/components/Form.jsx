@@ -40,10 +40,10 @@ export default ({ onSubmitProp, errors }) => {
         )}
         {request.length < 8 ? (
           <>
-            <p className="lead" style={{ color: "red" }}>
+            <p className="lead" style={{ color: "orange" }}>
               Write at least 8 characters to describe what you're going through.
             </p>
-            <button disabled="true" className="btn btn-success btn-sm">
+            <button disabled={true} className="btn btn-success btn-sm">
               Send Request
             </button>
           </>

@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import axios from "axios";
+
 import { Link, navigate } from "@reach/router";
 // import DeleteButton from "./DeleteButton";
 
@@ -6,6 +8,16 @@ import { Link, navigate } from "@reach/router";
 // HAHAHAHAHAHAHAHA
 
 export default ({ data }) => {
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:9001/api/players")
+  //     .then((res) => {
+  //       setPlayers(res.data);
+  //       setLoaded(true);
+  //     })
+  //     .catch((err) => console.log("Error: ", err));
+  // }, []);
+
   // useEffect(() => {
   //   data.setRequests(data.requests);
   // }, [data]);
