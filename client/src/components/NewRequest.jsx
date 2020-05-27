@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import Form from "../components/Form";
 import { Link, navigate } from "@reach/router";
+import { Button, Modal } from "react-bootstrap";
 
-export default () => {
+import Dragonite from "../components/Dragonite";
+
+export default (props) => {
   const [errors, setErrors] = useState([]);
 
   // Called back from Form, creates new request in DB
@@ -20,13 +23,33 @@ export default () => {
   return (
     <div className="h-100">
       <div className="container">
-        <h5>
-          What are you worried about?
-          <br />
-          Maybe someone else is too?
-        </h5>
+        <Dragonite />
+        <Modal
+          {...props}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+              Make a Request
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h5>
+              What are you worried about?
+              <br />
+              Maybe someone else is too?
+            </h5>
+            <Form onSubmitProp={createRequest} errors={errors} />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="info" onClick={props.onHide}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
-      <Form onSubmitProp={createRequest} errors={errors} />
     </div>
   );
 };

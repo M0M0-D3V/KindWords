@@ -20,25 +20,6 @@ export default (props) => {
   const [view, setView] = useState(0);
   const [modalShow, setModalShow] = useState(false);
 
-  // const [user, setUser] = useState([]);
-
-  // useEffect(() => {
-  //   getLoggedInUser();
-  // }, []);
-
-  // const getLoggedInUser = () => {
-  //   axios
-  //     .get("http://localhost:9001/api/users/loggedin", {
-  //       withCredentials: true,
-  //     })
-  //     .then((res) => setUser(res.data))
-  //     .catch((err) => {
-  //       console.log("not authorized");
-  //       console.log(err);
-  //       navigate("/welcome");
-  //     });
-  // };
-
   return (
     <div className="container" style={{ height: "650px" }}>
       <LoggedUser />

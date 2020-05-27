@@ -42,14 +42,14 @@ export default ({ onSubmitProp, errors }) => {
         {request.length < 8 ? (
           <>
             <p className="lead" style={{ color: "orange" }}>
-              Write at least 8 characters to describe what you're going through.
+              Write at least 8 characters.
             </p>
             <button disabled={true} className="btn btn-success btn-sm">
-              Send Request
+              Send
             </button>
           </>
         ) : (
-          <button className="btn btn-success btn-sm">Send Request</button>
+          <button className="btn btn-success btn-sm">Send!</button>
         )}
       </form>
     </div>
