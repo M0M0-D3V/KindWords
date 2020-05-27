@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
-import { Button } from "react-bootstrap";
+import { Button, Navbar, Nav } from "react-bootstrap";
+import LogOut from "../components/LogOut";
 import axios from "axios";
 
 import Dragonite from "../components/Dragonite";
-import LoggedUser from "../components/LoggedUser";
 import NewRequest from "../components/NewRequest";
 import ViewRequests from "../components/ViewRequests";
 import WriteAirplane from "../components/WriteAirplane";
@@ -19,37 +19,86 @@ import WriteAirplane from "../components/WriteAirplane";
 export default (props) => {
   const [view, setView] = useState(0);
   const [modalShow, setModalShow] = useState(false);
+  const [user, setUser] = useState([]);
 
+  useEffect(() => {
+    getLoggedInUser();
+  }, []);
+
+  const getLoggedInUser = () => {
+    axios
+      .get("http://localhost:9001/api/users/loggedin", {
+        withCredentials: true,
+      })
+      .then((res) => setUser(res.data))
+      .catch((err) => {
+        console.log("not authorized");
+        console.log(err);
+        navigate("/welcome");
+      });
+  };
+  const firstInitial = (name) => {
+    // [] NEED FIRST INITIAL TO WORK FOR PRIVACY
+    return name;
+    // const temp = name;
+    // temp.charAt(0);  why won't this work!??!?!
+    // .toUpperCase();
+  };
   return (
     <div className="container" style={{ height: "650px" }}>
-      <LoggedUser />
-      <Button
-        variant="info"
-        onClick={(e) => {
-          setView(1);
-          setModalShow(true);
-        }}
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="/">KIND WORDS</Navbar.Brand>
+        <h3>Welcome, {firstInitial(user.username)}!</h3>
+        <Nav.Item>
+          <Nav.Link eventKey="disabled" disabled>
+            INBOX
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="disabled" disabled>
+            MUSIC
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="disabled" disabled>
+            HELP
+          </Nav.Link>
+        </Nav.Item>
+        <LogOut />
+      </Navbar>
+      <div
+        style={{ textAlign: "center", marginTop: "20px", marginBottom: "20px" }}
       >
-        Make a Request
-      </Button>
-      <Button
-        variant="info"
-        onClick={(e) => {
-          setView(2);
-          setModalShow(true);
-        }}
-      >
-        View Requests
-      </Button>
-      <Button
-        variant="info"
-        onClick={(e) => {
-          setView(3);
-          setModalShow(true);
-        }}
-      >
-        Send a Happy Thought!
-      </Button>
+        <Button
+          variant="outline-info"
+          onClick={(e) => {
+            setView(1);
+            setModalShow(true);
+          }}
+        >
+          Make a Request
+        </Button>
+        {"      "}
+        <Button
+          variant="outline-info"
+          onClick={(e) => {
+            setView(2);
+            setModalShow(true);
+          }}
+        >
+          View Requests
+        </Button>
+        {"      "}
+        <Button
+          variant="outline-info"
+          onClick={(e) => {
+            setView(3);
+            setModalShow(true);
+          }}
+        >
+          Send a Happy Thought!
+        </Button>
+      </div>
       {view === 0 ? (
         <Dragonite />
       ) : view === 1 ? (
