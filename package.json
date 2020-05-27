@@ -20,6 +20,7 @@
     "mongoose": "^5.9.15",
     "mongoose-unique-validator": "^2.0.3",
     "nodemon": "^2.0.4",
+    "react-modal": "^3.11.2",
     "socket.io": "^2.3.0",
     "styled-components": "^5.1.0"
   }

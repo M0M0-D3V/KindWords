@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { navigate } from "@reach/router";
-import { Navbar } from "react-bootstrap";
+// import  from "react-modal";
+import { Navbar, Button, ButtonToolbar } from "react-bootstrap";
 import axios from "axios";
 
+import { RequestModal } from "../components/RequestModal";
 import LoggedUser from "../components/LoggedUser";
 
 // THIS IS USER DASHBOARD WHERE EVERYTHING HAPPENS
@@ -13,6 +15,7 @@ import LoggedUser from "../components/LoggedUser";
 // [] WRITE AIRPLANE BUTTON
 
 export default (props) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   // const [user, setUser] = useState([]);
 
   // useEffect(() => {
@@ -35,6 +38,11 @@ export default (props) => {
   return (
     <div className="container">
       <LoggedUser />
+      <button onClick={() => setModalIsOpen(true)}>Make requests</button>
+      <RequestModal isOpen={modalIsOpen}>
+        <h2>Make a new request</h2>
+        <p>Modal body</p>
+      </RequestModal>
     </div>
   );
 };
