@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Form from "../components/Form";
-import { Link, navigate } from "@reach/router";
+import { navigate } from "@reach/router";
 import { Button, Modal } from "react-bootstrap";
 
 import Dragonite from "../components/Dragonite";
 
 export default (props) => {
+  const [request, setRequest] = useState("");
   const [errors, setErrors] = useState([]);
 
   // Called back from Form, creates new request in DB
-  const createRequest = (request) => {
+  const createRequest = (e) => {
+    e.preventDefault();
+    const newRequest = {
+      request: request,
+    };
     axios
-      .post("http://localhost:9001/api/requests/new", request)
+      .post("http://localhost:9001/api/requests/new", newRequest)
       .then((res) => {
         console.log("Response: ", res);
         navigate("/");
