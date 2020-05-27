@@ -26,7 +26,8 @@ export default (props) => {
   const firstInitial = (name) => {
     // [] NEED FIRST INITIAL TO WORK FOR PRIVACY
     return name;
-    // .charAt(0);  why won't this work!??!?!
+    // const temp = name;
+    // temp.charAt(0);  why won't this work!??!?!
     // .toUpperCase();
   };
 
@@ -34,7 +35,7 @@ export default (props) => {
     <>
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">KIND WORDS</Navbar.Brand>
-        <h2>HEY YOU MADE IT, {firstInitial(user.username)}!</h2>
+        <h2>Welcome, {firstInitial(user.username)}!</h2>
         <LogOut />
       </Navbar>
     </>

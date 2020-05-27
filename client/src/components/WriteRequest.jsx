@@ -1,18 +1,11 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
-import pikachu from "../img/pikachu.png";
+import Pikachu from "../components/Pikachu";
 
 export default (props) => {
   return (
     <div>
-      <div className="text-center h-100">
-        <img src={pikachu} alt="pikachu" />
-      </div>
-      <p style={{ color: "#FFC857", textAlign: "center" }}>
-        Kind Words is a place you can come to share about your struggles and
-        pains as well as helping others in their own struggles too. Below are
-        some resources to help guide you.
-      </p>
+      <Pikachu />
       <Modal
         {...props}
         size="lg"

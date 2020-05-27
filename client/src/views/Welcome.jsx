@@ -19,7 +19,7 @@ export default () => {
   return (
     <div style={{ height: "650px" }} className=" container text-center">
       {/* need to fix LoggedUser to flag if logged in... */}
-      <LoggedUser />
+      {/* <LoggedUser /> */}
 
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">KIND WORDS</Navbar.Brand>
@@ -88,6 +88,10 @@ export default () => {
       >
         Writing Responses
       </Button>
+      <br />
+      {/* <audio controls>
+        <source src="growing-mix.wav" type="audio/wav"></source>
+      </audio> */}
     </div>
   );
 };

@@ -1,18 +1,11 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
-import pikachu from "../img/pikachu.png";
+import Pikachu from "../components/Pikachu";
 
 export default (props) => {
   return (
     <div>
-      <div className="text-center h-100">
-        <img src={pikachu} alt="pikachu" />
-      </div>
-      <p style={{ color: "#FFC857", textAlign: "center" }}>
-        Kind Words is a place you can come to share about your struggles and
-        pains as well as helping others in their own struggles too. Below are
-        some resources to help guide you.
-      </p>
+      <Pikachu />
       <Modal
         {...props}
         size="lg"
@@ -23,7 +16,7 @@ export default (props) => {
           <Modal.Title id="contained-modal-title-vcenter">Privacy</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p className="lead">
+          <p>
             Your privacy is important to us and so is maintaining a safe
             community. All messages are stored on a secure server and will not
             be exposed or used for any purposes outside of Kind Words. However,
