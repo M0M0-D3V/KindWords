@@ -49,7 +49,9 @@ export default ({ onSubmitProp, errors }) => {
               Write at least 8 characters.
             </p>
             <input type="hidden" />
-            <button className="btn btn-success btn-sm">Send</button>
+            <button disabled={true} className="btn btn-success btn-sm">
+              Send
+            </button>
           </>
         ) : (
           <button className="btn btn-success btn-sm">Send!</button>

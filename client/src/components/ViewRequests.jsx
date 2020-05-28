@@ -27,21 +27,28 @@ export default (props) => {
   // }, [props.data]);
 
   useEffect(() => {
-    //
-    fetch();
-  }, []);
-
-  const fetch = () => {
-    // useEffect(() => {
     axios
       .get("http://localhost:9001/api/requests")
       .then((res) => {
-        setRequests(res.data);
+        setRequests(...res.data);
         setLoaded(true);
       })
       .catch((err) => console.log("Error: ", err));
-    // }, []);
-  };
+    //
+    // fetch();
+  }, []);
+
+  // const fetch = () => {
+  //   // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:9001/api/requests")
+  //     .then((res) => {
+  //       setRequests(...res.data);
+  //       setLoaded(true);
+  //     })
+  //     .catch((err) => console.log("Error: ", err));
+  // }, []);
+  // };
 
   // const removeFromDom = (requestID) => {
   //   data.setRequests(
@@ -65,26 +72,35 @@ export default (props) => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h5>
-              Here are Requests others have posted.
-              <br />
-              Maybe you can write something nice to them?
-            </h5>
-            <p>Placeholder for Request lorem ipsums and 3 buttons below</p>
-            <div className="container">
-              <ul className="pagination">
-                {/* {requests.map((request, idx) => {
-                  return <li key={idx}>{request}</li>;
-                })} */}
-              </ul>
-            </div>
-            <div style={{ textAlign: "center" }}>
-              <Button variant="outline-dark">Previous</Button>
-              {"   "}
-              <Button variant="outline-dark">Reply</Button>
-              {"   "}
-              <Button variant="outline-dark">Next</Button>
-            </div>
+            {loaded ? (
+              <div>
+                <h5>
+                  Here are Requests others have posted.
+                  <br />
+                  Maybe you can write something nice to them?
+                </h5>
+                <p>Placeholder for Request lorem ipsums and 3 buttons below</p>
+                <div className="container">
+                  <ul className="pagination">
+                    {requests.map((request, idx) => {
+                      return <li key={idx}>{request.request}</li>;
+                    })}
+                  </ul>
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  <Button variant="outline-dark">Previous</Button>
+                  {"   "}
+                  <Button variant="outline-dark">Reply</Button>
+                  {"   "}
+                  <Button variant="outline-dark">Next</Button>
+                </div>
+              </div>
+            ) : (
+              <p>
+                Looks like there are no requests at the moment.. Check back
+                again later!
+              </p>
+            )}
           </Modal.Body>
           <Modal.Footer>
             <Button variant="info" onClick={props.onHide}>
