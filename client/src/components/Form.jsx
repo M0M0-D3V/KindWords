@@ -37,9 +37,9 @@ export default ({ onSubmitProp, errors, user }) => {
             autoFocus
           />
         </p>
-        <p style={{ textAlign: "right" }}>
+        <h4 style={{ textAlign: "right" }}>
           <label>-{user.username.charAt(0).toUpperCase()}</label>
-        </p>
+        </h4>
         <input type="hidden" value={requestBy} />
         {errors.request !== undefined ? (
           <span className="error" style={{ display: "block" }}>

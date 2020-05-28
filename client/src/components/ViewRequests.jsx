@@ -84,7 +84,11 @@ export default (props) => {
                 <div className="container">
                   <ul className="pagination">
                     {requests.map((request, idx) => {
-                      return <li key={idx}>{request.request}</li>;
+                      return (
+                        <li key={idx}>
+                          {request.request} -{request.requestBy}
+                        </li>
+                      );
                     })}
                   </ul>
                 </div>
