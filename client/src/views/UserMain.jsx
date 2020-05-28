@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
-import { Button, Navbar, Nav } from "react-bootstrap";
+import { Button, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import Inbox from "../components/Inbox";
+import Help from "../components/Help";
+import Privacy from "../components/Privacy";
+import WriteRequest from "../components/WriteRequest";
+import Respond from "../components/Respond";
 import LogOut from "../components/LogOut";
 import axios from "axios";
 import song from "../audio/lofiplaylist.mp3";
@@ -51,7 +56,12 @@ export default (props) => {
         <Navbar.Brand href="/">KIND WORDS</Navbar.Brand>
         <h3>Welcome, {firstInitial(user.username)}!</h3>
         <Nav.Item>
-          <Nav.Link eventKey="disabled" disabled>
+          <Nav.Link
+            onClick={(e) => {
+              setView(4);
+              setModalShow(true);
+            }}
+          >
             INBOX
           </Nav.Link>
         </Nav.Item>
@@ -60,11 +70,46 @@ export default (props) => {
             MUSIC
           </Nav.Link>
         </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="disabled" disabled>
-            HELP
-          </Nav.Link>
-        </Nav.Item>
+        <NavDropdown
+          bg="dark"
+          variant="dark"
+          title="HELP"
+          id="collasible-nav-dropdown"
+        >
+          <NavDropdown.Item
+            onClick={(e) => {
+              setView(5);
+              setModalShow(true);
+            }}
+          >
+            Help Resources
+          </NavDropdown.Item>
+          <NavDropdown.Item
+            onClick={(e) => {
+              setView(6);
+              setModalShow(true);
+            }}
+          >
+            Privacy
+          </NavDropdown.Item>
+          <NavDropdown.Item
+            onClick={(e) => {
+              setView(7);
+              setModalShow(true);
+            }}
+          >
+            Writing Requests
+          </NavDropdown.Item>
+          <NavDropdown.Item
+            onClick={(e) => {
+              setView(8);
+              setModalShow(true);
+            }}
+          >
+            Responding Requests
+          </NavDropdown.Item>
+        </NavDropdown>
+
         <LogOut />
       </Navbar>
       <div
@@ -116,6 +161,36 @@ export default (props) => {
         />
       ) : view === 3 ? (
         <WriteAirplane
+          user={user}
+          show={modalShow}
+          onHide={(e) => setModalShow(false)}
+        />
+      ) : view === 4 ? (
+        <Inbox
+          user={user}
+          show={modalShow}
+          onHide={(e) => setModalShow(false)}
+        />
+      ) : view === 5 ? (
+        <Help
+          user={user}
+          show={modalShow}
+          onHide={(e) => setModalShow(false)}
+        />
+      ) : view === 6 ? (
+        <Privacy
+          user={user}
+          show={modalShow}
+          onHide={(e) => setModalShow(false)}
+        />
+      ) : view === 7 ? (
+        <WriteRequest
+          user={user}
+          show={modalShow}
+          onHide={(e) => setModalShow(false)}
+        />
+      ) : view === 8 ? (
+        <Respond
           user={user}
           show={modalShow}
           onHide={(e) => setModalShow(false)}

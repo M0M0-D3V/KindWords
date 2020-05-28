@@ -41,7 +41,11 @@ export default (props) => {
               <br />
               Maybe someone else is too?
             </h5>
-            <Form onSubmitProp={createRequest} errors={errors} />
+            <Form
+              onSubmitProp={createRequest}
+              user={props.user}
+              errors={errors}
+            />
           </Modal.Body>
           <Modal.Footer>
             <Button variant="info" onClick={props.onHide}>

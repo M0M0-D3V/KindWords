@@ -76,11 +76,9 @@ export default (props) => {
             {loaded ? (
               <div>
                 <h5>
-                  Here are Requests others have posted.
-                  <br />
-                  Maybe you can write something nice to them?
+                  Here are some Responses others have written for your Requests?
                 </h5>
-                <p>Placeholder for Request lorem ipsums and 3 buttons below</p>
+
                 <div className="container">
                   <ul className="pagination">
                     {requests.map((request, idx) => {
@@ -95,15 +93,13 @@ export default (props) => {
                 <div style={{ textAlign: "center" }}>
                   <Button variant="outline-dark">Previous</Button>
                   {"   "}
-                  <Button variant="outline-dark">Reply</Button>
-                  {"   "}
                   <Button variant="outline-dark">Next</Button>
                 </div>
               </div>
             ) : (
               <p>
-                Looks like there are no requests at the moment.. Check back
-                again later!
+                Looks like there are no replies at the moment.. Check back again
+                later!
               </p>
             )}
           </Modal.Body>
