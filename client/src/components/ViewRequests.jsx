@@ -9,7 +9,7 @@ import Dragonite from "../components/Dragonite";
 // HAHAHAHAHAHAHAHA
 // user is in props. can use props.user.username or ._id
 export default (props) => {
-  const [requests, setRequests] = useState([]);
+  const [requests, setRequests] = useState(null);
   const [loaded, setLoaded] = useState(false);
 
   // useEffect(() => {
@@ -31,13 +31,14 @@ export default (props) => {
       .get("http://localhost:9001/api/requests")
       .then((res) => {
         console.log(res.data);
-        setRequests(...res.data);
+        setRequests(res.data.requests);
+        console.log(requests);
         setLoaded(true);
       })
       .catch((err) => console.log("Error: ", err));
     //
     // fetch();
-  }, [props]);
+  }, []);
 
   // const fetch = () => {
   //   // useEffect(() => {
@@ -80,17 +81,29 @@ export default (props) => {
                   <br />
                   Maybe you can write something nice to them?
                 </h5>
-                <p>Placeholder for Request lorem ipsums and 3 buttons below</p>
+                {/* {requests.map((request, index) => {
+                  return (
+                    <div key={index}>
+                      <p>
+                        {request.request} -{request.requestBy}
+                      </p>
+                    </div>
+                  );
+                })} */}
                 <div className="container">
-                  <ul className="pagination">
-                    {requests.map((request, idx) => {
-                      return (
-                        <li key={idx}>
-                          {request.request} -{request.requestBy}
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  <nav aria-label="Request Label">
+                    <ul className="pagination">
+                      {requests.map((request, idx) => {
+                        return (
+                          <div key={idx}>
+                            <li className="page-item">
+                              {request.request} -{request.requestBy}
+                            </li>
+                          </div>
+                        );
+                      })}
+                    </ul>
+                  </nav>
                 </div>
                 <div style={{ textAlign: "center" }}>
                   <Button variant="outline-dark">Previous</Button>
