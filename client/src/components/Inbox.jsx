@@ -68,15 +68,14 @@ export default (props) => {
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-              View Requests
-            </Modal.Title>
+            <Modal.Title id="contained-modal-title-vcenter">INBOX</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {loaded ? (
               <div>
                 <h5>
-                  Here are some Responses others have written for your Requests?
+                  Hey, {props.user.username}! Here are some Responses others
+                  have written for your Requests!
                 </h5>
 
                 <div className="container">
@@ -98,8 +97,8 @@ export default (props) => {
               </div>
             ) : (
               <p>
-                Looks like there are no replies at the moment.. Check back again
-                later!
+                Sorry {props.user.username}, Looks like there are no replies at
+                the moment.. Check back again later!
               </p>
             )}
           </Modal.Body>
