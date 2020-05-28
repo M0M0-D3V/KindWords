@@ -17,8 +17,10 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "modules": "^0.4.0",
     "mongoose": "^5.9.15",
     "mongoose-unique-validator": "^2.0.3",
+    "node": "^14.3.0",
     "nodemon": "^2.0.4",
     "socket.io": "^2.3.0",
     "styled-components": "^5.1.0"
