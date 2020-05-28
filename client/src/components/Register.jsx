@@ -30,7 +30,7 @@ export default (props) => {
         setConfirmPassword("");
       })
       .catch((err) => {
-        console.log(err + " " + "this is error");
+        console.log(err, "this is error");
 
         setErrors(err.response.data.errors);
       });

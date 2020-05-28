@@ -4,8 +4,11 @@ import { Form } from "react-bootstrap";
 // [] COPIED OVER FROM TEAM MANAGER NEED TO CHANGE VARIABLES
 //  AHAHAHHA MONICA IS A LAZY DEVELOPER
 
+// [] SEND USERID TO ONSUBMITPROP FOR REQUESTBY
+
 export default ({ onSubmitProp, errors }) => {
   const [request, setRequest] = useState("");
+  const [requestBy, setRequestBy] = useState("");
   const [requestError, setRequestError] = useState(true);
 
   const onRequestChange = (e) => {
@@ -45,6 +48,7 @@ export default ({ onSubmitProp, errors }) => {
             <p className="lead" style={{ color: "orange" }}>
               Write at least 8 characters.
             </p>
+            <input type="hidden" />
             <button className="btn btn-success btn-sm">Send</button>
           </>
         ) : (

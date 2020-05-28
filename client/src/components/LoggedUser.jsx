@@ -4,6 +4,8 @@ import axios from "axios";
 import { Navbar } from "react-bootstrap";
 import LogOut from "../components/LogOut";
 
+// THINK THIS DOESN"T NEED TO BE A STANDALONE COMPONENT
+
 export default (props) => {
   const [user, setUser] = useState([]);
 
@@ -31,13 +33,5 @@ export default (props) => {
     // .toUpperCase();
   };
 
-  return (
-    <>
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/">KIND WORDS</Navbar.Brand>
-        <h2>Welcome, {firstInitial(user.username)}!</h2>
-        <LogOut />
-      </Navbar>
-    </>
-  );
+  return <></>;
 };

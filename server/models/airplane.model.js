@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const AirplaneSchema = new mongoose.Schema(
   {
-    message: {
+    request: {
       type: String,
       required: [true, "Write a happy thought!"],
       maxlength: [70, "Max length is 70 characters."],
