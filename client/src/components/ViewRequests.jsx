@@ -7,12 +7,32 @@ import Dragonite from "../components/Dragonite";
 
 // BASICALLY COPIED OVER FROM TEAM MANAGER AND FIXING VARIABLES.
 // HAHAHAHAHAHAHAHA
-
+// user is in props. can use props.user.username or ._id
 export default (props) => {
   const [requests, setRequests] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:9001/api/requests")
+  //     .then((res) => {
+  //       setRequests(res.data);
+  //       setLoaded(true);
+  //     })
+  //     .catch((err) => console.log("Error: ", err));
+  // }, []);
+
+  // useEffect(() => {
+  //   props.data.setRequests(props.data.requests);
+  // }, [props.data]);
+
   useEffect(() => {
+    //
+    fetch();
+  }, []);
+
+  const fetch = () => {
+    // useEffect(() => {
     axios
       .get("http://localhost:9001/api/requests")
       .then((res) => {
@@ -20,11 +40,8 @@ export default (props) => {
         setLoaded(true);
       })
       .catch((err) => console.log("Error: ", err));
-  }, []);
-
-  useEffect(() => {
-    props.data.setRequests(props.data.requests);
-  }, [props.data]);
+    // }, []);
+  };
 
   // const removeFromDom = (requestID) => {
   //   data.setRequests(
@@ -51,12 +68,23 @@ export default (props) => {
             <h5>
               Here are Requests others have posted.
               <br />
-              Maybe you can something nice to them?
+              Maybe you can write something nice to them?
             </h5>
             <p>Placeholder for Request lorem ipsums and 3 buttons below</p>
-            <Button variant="outline-dark">Previous</Button>
-            <Button variant="outline-dark">Reply</Button>
-            <Button variant="outline-dark">Next</Button>
+            <div className="container">
+              <ul className="pagination">
+                {/* {requests.map((request, idx) => {
+                  return <li key={idx}>{request}</li>;
+                })} */}
+              </ul>
+            </div>
+            <div style={{ textAlign: "center" }}>
+              <Button variant="outline-dark">Previous</Button>
+              {"   "}
+              <Button variant="outline-dark">Reply</Button>
+              {"   "}
+              <Button variant="outline-dark">Next</Button>
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="info" onClick={props.onHide}>
