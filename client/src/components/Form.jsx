@@ -6,20 +6,21 @@ import { Form } from "react-bootstrap";
 
 // [] SEND USERID TO ONSUBMITPROP FOR REQUESTBY
 
-export default ({ onSubmitProp, errors }) => {
+export default ({ onSubmitProp, errors, user }) => {
   const [request, setRequest] = useState("");
   const [requestBy, setRequestBy] = useState("");
   const [requestError, setRequestError] = useState(true);
 
   const onRequestChange = (e) => {
     setRequest(e.target.value);
+    setRequestBy(user.username);
     e.target.value.length < 8 ? setRequestError(true) : setRequestError(false);
   };
 
   const onSubmitHandler = (e) => {
     console.log("this is event" + " " + e.response);
     e.preventDefault();
-    onSubmitProp({ request });
+    onSubmitProp({ request, requestBy });
   };
 
   return (
@@ -36,6 +37,10 @@ export default ({ onSubmitProp, errors }) => {
             autoFocus
           />
         </p>
+        <p style={{ textAlign: "right" }}>
+          <label>-{user.username.charAt(0).toUpperCase()}</label>
+        </p>
+        <input type="hidden" value={requestBy} />
         {errors.request !== undefined ? (
           <span className="error" style={{ display: "block" }}>
             {errors.request.message}
@@ -48,7 +53,6 @@ export default ({ onSubmitProp, errors }) => {
             <p className="lead" style={{ color: "orange" }}>
               Write at least 8 characters.
             </p>
-            <input type="hidden" />
             <button disabled={true} className="btn btn-success btn-sm">
               Send
             </button>

@@ -30,13 +30,14 @@ export default (props) => {
     axios
       .get("http://localhost:9001/api/requests")
       .then((res) => {
+        console.log(res.data);
         setRequests(...res.data);
         setLoaded(true);
       })
       .catch((err) => console.log("Error: ", err));
     //
     // fetch();
-  }, []);
+  }, [props]);
 
   // const fetch = () => {
   //   // useEffect(() => {

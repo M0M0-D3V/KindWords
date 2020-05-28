@@ -41,7 +41,11 @@ export default (props) => {
               <br />
               Maybe a favorite quote?
             </h5>
-            <Form onSubmitProp={createPlane} errors={errors} />
+            <Form
+              onSubmitProp={createPlane}
+              user={props.user}
+              errors={errors}
+            />
           </Modal.Body>
           <Modal.Footer>
             <Button variant="info" onClick={props.onHide}>
