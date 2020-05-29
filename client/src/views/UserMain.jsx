@@ -13,7 +13,8 @@ import song from "../audio/lofiplaylist.mp3";
 import Dragonite from "../components/Dragonite";
 import NewRequest from "../components/NewRequest";
 import ViewRequests from "../components/ViewRequests";
-import WriteAirplane from "../components/WriteAirplane";
+// import WriteAirplane from "../components/WriteAirplane";
+import io from "socket.io-client";
 
 // THIS IS USER DASHBOARD WHERE EVERYTHING HAPPENS
 // [x] CHANGE TO GET 1 USER ONLY
@@ -22,14 +23,40 @@ import WriteAirplane from "../components/WriteAirplane";
 // [x] VIEW REQUESTS BUTTON
 // [x] WRITE AIRPLANE BUTTON
 
+const socket = io(":9001");
+
 export default (props) => {
   const [view, setView] = useState(0);
   const [modalShow, setModalShow] = useState(false);
   const [user, setUser] = useState([]);
+  const [currentAirPlane, setCurrentAirPlane] = useState([]);
+  const [airPlane, setAirPlane] = useState("");
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     getLoggedInUser();
   }, []);
+
+  useEffect(() => {
+    socket.on("updated Airplane", (updatedAirPlane) => {
+      setCurrentAirPlane(updatedAirPlane);
+      setAirPlane(updatedAirPlane.airPlane);
+    });
+    return () => {
+      socket.disconnect(true);
+    };
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(airPlane);
+    socket.emit("new airplane", airPlane);
+  };
+
+  const onAirPlaneChange = (e) => {
+    setAirPlane(e.target.value);
+    e.target.value.length < 8 ? setErrors(true) : setErrors(false);
+  };
 
   const getLoggedInUser = () => {
     axios
@@ -135,7 +162,7 @@ export default (props) => {
           View Requests
         </Button>
         {"      "}
-        <Button
+        {/* <Button
           variant="outline-info"
           onClick={(e) => {
             setView(3);
@@ -143,7 +170,7 @@ export default (props) => {
           }}
         >
           Send a Happy Thought!
-        </Button>
+        </Button> */}
       </div>
       {view === 0 ? (
         <Dragonite />
@@ -159,13 +186,17 @@ export default (props) => {
           show={modalShow}
           onHide={(e) => setModalShow(false)}
         />
-      ) : view === 3 ? (
-        <WriteAirplane
-          user={user}
-          show={modalShow}
-          onHide={(e) => setModalShow(false)}
-        />
-      ) : view === 4 ? (
+      ) : //  : view === 3 ? (
+      //   <WriteAirplane
+      //     data={
+      //       (currentAirPlane, setCurrentAirPlane, airPlane, setAirPlane, socket)
+      //     }
+      //     user={user}
+      //     show={modalShow}
+      //     onHide={(e) => setModalShow(false)}
+      //   />
+      // )
+      view === 4 ? (
         <Inbox
           user={user}
           show={modalShow}
@@ -198,9 +229,48 @@ export default (props) => {
       ) : (
         <p></p>
       )}
-      <audio controls autoPlay>
-        <source src={song} type="audio/mpeg"></source>
-      </audio>
+      {/* MUSIC HERE!! */}
+      <div className="row inline">
+        <div>
+          <audio controls autoPlay>
+            <source src={song} type="audio/mpeg"></source>
+          </audio>
+        </div>
+        {/* AIRPLANE SOCKET HERE!!! */}
+        <div>
+          <h5>
+            Got some love to spread?
+            <br />
+            Maybe a favorite quote?
+          </h5>
+          <form
+            onSubmit={(event) => {
+              handleSubmit(event);
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Write here..."
+              value={airPlane}
+              onChange={onAirPlaneChange}
+            />
+
+            <button className="btn btn-success btn-sm">Send!</button>
+          </form>
+        </div>
+        <div>
+          {/* <p>{currentAirPlane.airPlane}</p> */}
+          <h3>Happy Thoughts From Others!</h3>
+          {console.log(currentAirPlane.airPlane)}
+          {/* {currentAirPlane.airPlane.map((airPlane, i) => {
+            return (
+              <p key={i}>
+                Message: {airPlane.message} | On: {airPlane.date}
+              </p>
+            );
+          })} */}
+        </div>
+      </div>
     </div>
   );
 };
