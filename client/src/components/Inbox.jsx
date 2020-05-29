@@ -61,7 +61,7 @@ export default (props) => {
                       return (
                         <div key={idx}>
                           <li className="page-item">
-                            For: {request.request}-They wrote:{" "}
+                            For: {request.request} -They wrote:{" "}
                             {request.response.body}
                           </li>
                         </div>
