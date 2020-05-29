@@ -251,7 +251,7 @@ export default (props) => {
             <input
               type="text"
               placeholder="Write here..."
-              value={airPlane}
+              value={airPlane.airPlane}
               onChange={onAirPlaneChange}
             />
 
