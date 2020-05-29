@@ -9,28 +9,14 @@ import Dragonite from "../components/Dragonite";
 // HAHAHAHAHAHAHAHA
 // user is in props. can use props.user.username or ._id
 export default (props) => {
-  const [requests, setRequests] = useState([]);
+  const [requests, setRequests] = useState(null);
   const [loaded, setLoaded] = useState(false);
-
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:9001/api/requests")
-  //     .then((res) => {
-  //       setRequests(res.data);
-  //       setLoaded(true);
-  //     })
-  //     .catch((err) => console.log("Error: ", err));
-  // }, []);
-
-  // useEffect(() => {
-  //   props.data.setRequests(props.data.requests);
-  // }, [props.data]);
 
   useEffect(() => {
     axios
       .get("http://localhost:9001/api/requests")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setRequests(res.data.requests);
         setLoaded(true);
       })
@@ -39,23 +25,11 @@ export default (props) => {
     // fetch();
   }, []);
 
-  // const fetch = () => {
-  //   // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:9001/api/requests")
-  //     .then((res) => {
-  //       setRequests(...res.data);
-  //       setLoaded(true);
-  //     })
-  //     .catch((err) => console.log("Error: ", err));
-  // }, []);
-  // };
-
-  // const removeFromDom = (requestID) => {
-  //   data.setRequests(
-  //     data.requests.filter((request) => request._id !== requestID)
-  //   );
-  // };
+  const filterRequestByUser = () => {
+    return requests.filter(
+      (request) => request.requestBy === props.user.username
+    );
+  };
 
   return (
     <div className="h-100">
@@ -80,22 +54,20 @@ export default (props) => {
 
                 <div className="container">
                   {/* <ul className="pagination"> */}
-                  {console.log(requests)}
-                  {requests.filter((request) => {
-                    console.log(request.requestBy);
-                    console.log(props.user.username);
-                    return request.requestBy == props.user.username;
-                    // return request.requestBy === props.user.username;
-                    // })
-                    // .map((request, idx) => {
-                    //   return (
-                    //     <div key={idx}>
-                    //       <li className="page-item">
-                    //         {request.response} -{request.requestBy}
-                    //       </li>
-                    //     </div>
-                    //   );
-                  })}
+                  {console.log(filterRequestByUser(requests))}
+                  <ul>
+                    {/* Your previous Requests... */}
+                    {filterRequestByUser(requests).map((request, idx) => {
+                      return (
+                        <div key={idx}>
+                          <li className="page-item">
+                            For: {request.request}-They wrote:{" "}
+                            {request.response.body}
+                          </li>
+                        </div>
+                      );
+                    })}
+                  </ul>
                   {/* </ul> */}
                 </div>
                 {/* <div style={{ textAlign: "center" }}>
