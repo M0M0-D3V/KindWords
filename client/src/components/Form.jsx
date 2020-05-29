@@ -7,6 +7,7 @@ import { Form } from "react-bootstrap";
 // [] SEND USERID TO ONSUBMITPROP FOR REQUESTBY
 
 export default ({ onSubmitProp, errors, user }) => {
+  // console.log(errors);
   const [request, setRequest] = useState("");
   const [requestBy, setRequestBy] = useState("");
   const [requestError, setRequestError] = useState(true);
