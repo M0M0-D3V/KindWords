@@ -17,5 +17,5 @@ require("./routes/airplane.routes")(app);
 require("./routes/request.routes")(app);
 
 app.listen(process.env.DB_PORT, () =>
-  console.log(`Listening on port ${process.env.DB_PORT}`)
+  console.log(`Listening on port ${process.env.DB_PORT} lol`)
 );
