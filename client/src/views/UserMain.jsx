@@ -29,8 +29,8 @@ export default (props) => {
   const [view, setView] = useState(0);
   const [modalShow, setModalShow] = useState(false);
   const [user, setUser] = useState([]);
-  const [currentAirPlane, setCurrentAirPlane] = useState([]);
-  const [airPlane, setAirPlane] = useState("");
+  const [currentAirPlane, setCurrentAirPlane] = useState({ airPlane: [] });
+  const [airPlane, setAirPlane] = useState([]);
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -262,13 +262,13 @@ export default (props) => {
           {/* <p>{currentAirPlane.airPlane}</p> */}
           <h3>Happy Thoughts From Others!</h3>
           {console.log(currentAirPlane.airPlane)}
-          {/* {currentAirPlane.airPlane.map((airPlane, i) => {
+          {currentAirPlane.airPlane.map((airPlane, i) => {
             return (
               <p key={i}>
                 Message: {airPlane.message} | On: {airPlane.date}
               </p>
             );
-          })} */}
+          })}
         </div>
       </div>
     </div>
