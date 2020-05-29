@@ -10,6 +10,7 @@ import Dragonite from "../components/Dragonite";
 // user is in props. can use props.user.username or ._id
 export default (props) => {
   const [requests, setRequests] = useState(null);
+  const [reply, setReply] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
   // useEffect(() => {
@@ -40,23 +41,23 @@ export default (props) => {
     // fetch();
   }, []);
 
-  // const fetch = () => {
-  //   // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:9001/api/requests")
-  //     .then((res) => {
-  //       setRequests(...res.data);
-  //       setLoaded(true);
-  //     })
-  //     .catch((err) => console.log("Error: ", err));
-  // }, []);
-  // };
-
-  // const removeFromDom = (requestID) => {
-  //   data.setRequests(
-  //     data.requests.filter((request) => request._id !== requestID)
-  //   );
-  // };
+  const postReply = (request) => {
+    const editedRequest = {
+      response: [reply],
+    };
+    console.log(request);
+    axios
+      .put(
+        `http://localhost:9001/api/requests/update/${request._id}`,
+        editedRequest
+      )
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      }, []);
+  };
 
   return (
     <div className="h-100">
@@ -81,37 +82,50 @@ export default (props) => {
                   <br />
                   Maybe you can write something nice to them?
                 </h5>
-                {/* {requests.map((request, index) => {
-                  return (
-                    <div key={index}>
-                      <p>
-                        {request.request} -{request.requestBy}
-                      </p>
-                    </div>
-                  );
-                })} */}
                 <div className="container">
                   <nav aria-label="Request Label">
-                    <ul className="pagination">
+                    <ul>
                       {requests.map((request, idx) => {
                         return (
                           <div key={idx}>
                             <li className="page-item">
                               {request.request} -{request.requestBy}
                             </li>
+                            <form
+                              onSubmit={postReply(request)}
+                              id={request._id}
+                            >
+                              <input type="hidden" id={request._id} />
+                              <textarea
+                                className="form-control"
+                                rows="3"
+                                onChange={(event) => {
+                                  setReply(event.target.value);
+                                }}
+                              ></textarea>
+                              <button className="btn btn-info">Reply</button>
+                              <br /> <br />
+                            </form>
                           </div>
                         );
                       })}
+                      <br />
+                      {/* <li>
+                        <a href="">Previous</a>
+                      </li>
+                      <li>
+                        <a href="">Next</a>
+                      </li> */}
                     </ul>
                   </nav>
                 </div>
-                <div style={{ textAlign: "center" }}>
+                {/* <div style={{ textAlign: "center" }}>
                   <Button variant="outline-dark">Previous</Button>
                   {"   "}
                   <Button variant="outline-dark">Reply</Button>
                   {"   "}
                   <Button variant="outline-dark">Next</Button>
-                </div>
+                </div> */}
               </div>
             ) : (
               <p>
