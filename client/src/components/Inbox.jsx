@@ -31,13 +31,13 @@ export default (props) => {
       .get("http://localhost:9001/api/requests")
       .then((res) => {
         console.log(res.data);
-        setRequests(...res.data);
+        setRequests(res.data.requests);
         setLoaded(true);
       })
       .catch((err) => console.log("Error: ", err));
     //
     // fetch();
-  }, [props]);
+  }, []);
 
   // const fetch = () => {
   //   // useEffect(() => {
@@ -79,21 +79,30 @@ export default (props) => {
                 </h5>
 
                 <div className="container">
-                  <ul className="pagination">
-                    {requests.map((request, idx) => {
-                      return (
-                        <li key={idx}>
-                          {request.request} -{request.requestBy}
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  {/* <ul className="pagination"> */}
+                  {console.log(requests)}
+                  {requests.filter((request) => {
+                    console.log(request.requestBy);
+                    console.log(props.user.username);
+                    return request.requestBy == props.user.username;
+                    // return request.requestBy === props.user.username;
+                    // })
+                    // .map((request, idx) => {
+                    //   return (
+                    //     <div key={idx}>
+                    //       <li className="page-item">
+                    //         {request.response} -{request.requestBy}
+                    //       </li>
+                    //     </div>
+                    //   );
+                  })}
+                  {/* </ul> */}
                 </div>
-                <div style={{ textAlign: "center" }}>
+                {/* <div style={{ textAlign: "center" }}>
                   <Button variant="outline-dark">Previous</Button>
                   {"   "}
                   <Button variant="outline-dark">Next</Button>
-                </div>
+                </div> */}
               </div>
             ) : (
               <p>
