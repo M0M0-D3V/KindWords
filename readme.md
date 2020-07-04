@@ -10,12 +10,12 @@
 
 ### KindWords was built in a week's time- 3 days of planning and research and 4 days of coding.
 My team was able to achieve the below for **MVP**:
-- [x]: Resource Links and User conduct info
-- [x]: Login/Reg
-- [x]: Socket to have live connection and see chat
-- [x]: Request System- Make Request, and View Requests and write Replies
-- [x]: Inbox to receive and view Replies
-- [x]: Starfield and general colors picked
+* [x]: Resource Links and User conduct info
+* [x]: Login/Reg
+* [x]: Socket to have live connection and see chat
+* [x]: Request System- Make Request, and View Requests and write Replies
+* [x]: Inbox to receive and view Replies
+* [x]: Starfield and general colors picked
 
 **The below are features that are still in development.**
 - [ ]: Airplanes have lifespan of 1 hour and autodeletes from db
