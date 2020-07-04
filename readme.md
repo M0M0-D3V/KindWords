@@ -1,23 +1,36 @@
--P0 [x]: Resource Links and User conduct info
--P0 [x]: Login/Reg
--P0 [x]: Socket to have live connection and see chat
--P0 [x]: Request System- Make Request, and View Requests and write Replies
--P0 [x]: Inbox to receive and view Replies
--P0 [x]: Starfield and general colors picked
+![alt text](https://m0m0-d3v.github.io/img/kindwordsawwapp.png "kindwordsawwapp")
 
--P1 []: Airplanes have lifespan of 1 hour and autodeletes from db
--P1 [x]: COLOR PALETTE FIX
--P1 []: Delete Requests with confirmations
--P1 []: See Request History
--P1 []: Logo and Theme
--P1 []: Cute mascot that coordinates and prompts UX with appropriate dialogue
+# A group project inspired by the indie steam game that brings people together to write kind, thoughtful, and encouraging letters to each other.
 
--P2 []: Admin to moderate Report abuse
--P2 [x]: Custom Music Player
--P2 []: Everything in "/" so that music is uninterrupted
--P2 []: Pretty Animations
--P2 []: Ability to save replies to file in a nice format
--P2 []: Toggle Daytime Theme. HA
--P2 []: Design avatar game feature
--P2 []: Stickers feature or other Thank you Gift idea
--P2 []: OTHERS!
+#### Meet the team:
+- Sawyee Beck
+- Levi Blank
+- Patrick Hebert
+- Monica Hong
+
+### KindWords was built in a week's time- 3 days of planning and research and 4 days of coding.
+My team was able to achieve the below for **MVP**:
+- [x]: Resource Links and User conduct info
+- [x]: Login/Reg
+- [x]: Socket to have live connection and see chat
+- [x]: Request System- Make Request, and View Requests and write Replies
+- [x]: Inbox to receive and view Replies
+- [x]: Starfield and general colors picked
+
+**The below are features that are still in development.**
+- [ ]: Airplanes have lifespan of 1 hour and autodeletes from db
+- [x]: COLOR PALETTE FIX
+- [ ]: Delete Requests with confirmations
+- [ ]: See Request History
+- [ ]: Logo and Theme
+- [ ]: Cute mascot that coordinates and prompts UX with appropriate dialogue
+
+- [ ]: Admin to moderate Report abuse
+- [x]: Custom Music Player
+- [ ]: Everything in "/" so that music is uninterrupted
+- [ ]: Pretty Animations
+- [ ]: Ability to save replies to file in a nice format
+- [ ]: Toggle Daytime Theme. HA
+- [ ]: Design avatar game feature
+- [ ]: Stickers feature or other Thank you Gift idea
+- [ ]: OTHERS!
