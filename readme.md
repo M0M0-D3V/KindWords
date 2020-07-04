@@ -31,9 +31,10 @@ My team was able to achieve the below for **MVP**:
 - [ ] Logo designing
 - [ ] Cute mascot that coordinates and prompts UX with appropriate dialogue
 - [ ] Admin to moderate Report abuse
-- [ ] Everything in "/" so that music is uninterrupted
+- [ ] Strict single page in "/" so that music is uninterrupted
 - [ ] Pretty Animations
-- [ ] Ability to save replies to file in a nice format
+- [ ] Integrate Sentiment Analysis API to gauge emotions and intentions of User post requests and responses to automate a way to moderate without Admin involvement for each case by case scenario which can allow for overall improved quality and growth in community
+- [ ] Ability to save replies to file in a nice formatted pdf or doc so users can take with them outside of the website
 - [ ] Toggle Daytime Theme. HA
 - [ ] Design avatar game feature
 - [ ] Stickers feature or other Thank you Gift idea
