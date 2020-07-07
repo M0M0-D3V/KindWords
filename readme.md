@@ -23,6 +23,7 @@ My team was able to achieve the below for **MVP**:
   * [x] See history of all Requests made
 * [x] Starfield and general colors picked
 - [x] Custom Music Player
+- [x] Strict single page in "/" so that music is uninterrupted
 
 **The below are features that are still in development.**
 - [ ] Airplanes have lifespan of 1 hour and autodeletes from db
@@ -31,7 +32,6 @@ My team was able to achieve the below for **MVP**:
 - [ ] Logo designing
 - [ ] Cute mascot that coordinates and prompts UX with appropriate dialogue
 - [ ] Admin to moderate Report abuse
-- [ ] Strict single page in "/" so that music is uninterrupted
 - [ ] Pretty Animations
 - [ ] Integrate Sentiment Analysis API to gauge emotions and intentions of User post requests and responses to automate a way to moderate without Admin involvement for each case by case scenario which can allow for overall improved quality and growth in community
 - [ ] Ability to save replies to file in a nice formatted pdf or doc so users can take with them outside of the website
