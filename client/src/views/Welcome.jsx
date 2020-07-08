@@ -8,8 +8,9 @@ import Help from "../components/Help";
 import Privacy from "../components/Privacy";
 import WriteRequest from "../components/WriteRequest";
 import Respond from "../components/Respond";
+import LogReg from "../views/LogReg";
 
-// [] - WOULD BE NICE TO TURN THESE LINK DISPLAYS INTO BOOTSTRAP MODALS!!
+// [x] - WOULD BE NICE TO TURN THESE LINK DISPLAYS INTO BOOTSTRAP MODALS!!
 
 export default () => {
   const [view, setView] = useState(0);
@@ -28,7 +29,8 @@ export default () => {
         <Button
           variant="secondary"
           onClick={(e) => {
-            navigate("/login");
+            setView(5);
+            setModalShow(true);
           }}
         >
           Login or Register here!
@@ -45,6 +47,8 @@ export default () => {
         <WriteRequest show={modalShow} onHide={(e) => setModalShow(false)} />
       ) : view === 4 ? (
         <Respond show={modalShow} onHide={(e) => setModalShow(false)} />
+      ) : view === 5 ? (
+        <LogReg show={modalShow} onHide={(e) => setModalShow(false)} />
       ) : (
         <p></p>
       )}

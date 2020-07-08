@@ -1,33 +1,35 @@
 import React from "react";
-import { Jumbotron, Button, Navbar } from "react-bootstrap";
+import { Jumbotron, Button, Modal, Navbar } from "react-bootstrap";
 import { navigate } from "@reach/router";
 import Login from "../components/Login";
+import Pikachu from "../components/Pikachu";
 import Register from "../components/Register";
 
-export default () => {
+export default (props) => {
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/">KIND WORDS</Navbar.Brand>
-
-        <h3 style={{ color: "#FFC857", textAlign: "right" }}>
-          WELCOME TO KIND WORDS!
-        </h3>
-      </Navbar>
-      <Jumbotron className="bg-transparent">
-        <div className="container-flex">
+      <Pikachu />
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Login / Register
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <Login />
           <Register />
-        </div>
-      </Jumbotron>
-      <Button
-        variant="dark"
-        onClick={(e) => {
-          navigate("/");
-        }}
-      >
-        Go back to main...
-      </Button>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="info" onClick={props.onHide}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
