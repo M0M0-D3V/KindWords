@@ -25,7 +25,7 @@ My team was able to achieve the below for **MVP**:
 - [x] Custom Music Player
 - [x] Strict single page in "/" so that music is uninterrupted
 
-**The below are features that are still in development.**
+## The below are features that are still in development.
 - [ ] Airplanes have lifespan of 1 hour and autodeletes from db
 - [ ] Delete Requests from Inbox history with confirmations
 - [ ] Revise DB Query for View Requests to block requests made by self
