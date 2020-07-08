@@ -13,7 +13,7 @@ import song from "../audio/lofiplaylist.mp3";
 import Dragonite from "../components/Dragonite";
 import NewRequest from "../components/NewRequest";
 import ViewRequests from "../components/ViewRequests";
-// import WriteAirplane from "../components/WriteAirplane";
+import WriteAirplane from "../components/WriteAirplane";
 import io from "socket.io-client";
 
 // THIS IS USER DASHBOARD WHERE EVERYTHING HAPPENS
@@ -72,10 +72,11 @@ export default (props) => {
   };
   const firstInitial = (name) => {
     // [] NEED FIRST INITIAL TO WORK FOR PRIVACY
-    return name;
-    // const temp = name;
-    // temp.charAt(0);  //why won't this work!??!?!
-    // .toUpperCase();
+    let temp = name;
+    console.log(`name is ${name}`);
+    name !== undefined ? (temp = name.charAt(0).toUpperCase()) : (temp = name);
+
+    return temp;
   };
   return (
     <div className="container" style={{ height: "650px" }}>
@@ -99,12 +100,7 @@ export default (props) => {
             </audio>
           </Nav.Link>
         </Nav.Item>
-        <NavDropdown
-          bg="dark"
-          variant="dark"
-          title="HELP"
-          id="collasible-nav-dropdown"
-        >
+        <NavDropdown title="HELP" id="collasible-nav-dropdown">
           <NavDropdown.Item
             onClick={(e) => {
               setView(5);
@@ -114,6 +110,8 @@ export default (props) => {
             Help Resources
           </NavDropdown.Item>
           <NavDropdown.Item
+            bg="dark"
+            variant="dark"
             onClick={(e) => {
               setView(6);
               setModalShow(true);
@@ -164,7 +162,7 @@ export default (props) => {
           View Requests
         </Button>
         {"      "}
-        {/* <Button
+        <Button
           variant="outline-info"
           onClick={(e) => {
             setView(3);
@@ -172,7 +170,7 @@ export default (props) => {
           }}
         >
           Send a Happy Thought!
-        </Button> */}
+        </Button>
       </div>
       {view === 0 ? (
         <Dragonite />
@@ -188,17 +186,21 @@ export default (props) => {
           show={modalShow}
           onHide={(e) => setModalShow(false)}
         />
-      ) : //  : view === 3 ? (
-      //   <WriteAirplane
-      //     data={
-      //       (currentAirPlane, setCurrentAirPlane, airPlane, setAirPlane, socket)
-      //     }
-      //     user={user}
-      //     show={modalShow}
-      //     onHide={(e) => setModalShow(false)}
-      //   />
-      // )
-      view === 4 ? (
+      ) : view === 3 ? (
+        <WriteAirplane
+          data={
+            (user,
+            currentAirPlane,
+            setCurrentAirPlane,
+            airPlane,
+            setAirPlane,
+            socket)
+          }
+          user={user}
+          show={modalShow}
+          onHide={(e) => setModalShow(false)}
+        />
+      ) : view === 4 ? (
         <Inbox
           user={user}
           show={modalShow}

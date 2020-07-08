@@ -62,7 +62,7 @@ export default (props) => {
                   rows="10"
                   size="lg"
                   placeholder="Write here..."
-                  value={props.data.airPlane}
+                  value={props.airPlane.airPlane}
                   onChange={onAirPlaneChange}
                   autoFocus
                 />
@@ -88,7 +88,7 @@ export default (props) => {
                 </>
               ) : ( */}
               <button className="btn btn-success btn-sm">Send!</button>
-              {/* )} */}>
+              {/* )} */}
             </form>
 
             {/* <Form
