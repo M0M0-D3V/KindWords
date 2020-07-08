@@ -94,7 +94,9 @@ export default (props) => {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="disabled" disabled>
-            MUSIC
+            <audio controls autoPlay>
+              <source src={song} type="audio/mpeg"></source>
+            </audio>
           </Nav.Link>
         </Nav.Item>
         <NavDropdown
@@ -231,13 +233,13 @@ export default (props) => {
       )}
       {/* MUSIC HERE!! */}
       <div className="row inline">
-        <div>
+        {/* <div>
           <audio controls autoPlay>
             <source src={song} type="audio/mpeg"></source>
           </audio>
-        </div>
+        </div> */}
         {/* AIRPLANE SOCKET HERE!!! */}
-        <div>
+        <div class="col-md-6">
           <h5>
             Got some love to spread?
             <br />
@@ -258,9 +260,9 @@ export default (props) => {
             <button className="btn btn-success btn-sm">Send!</button>
           </form>
         </div>
-        <div>
+        <div class="col-md-6" style={{ height: "100px" }}>
           {/* <p>{currentAirPlane.airPlane}</p> */}
-          <h3>Happy Thoughts From Others!</h3>
+          <h4>Happy Thoughts From Others!</h4>
           {console.log(currentAirPlane.airPlane)}
           {currentAirPlane.airPlane.map((airPlane, i) => {
             return (
