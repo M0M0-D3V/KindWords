@@ -33,7 +33,7 @@ export default (props) => {
       .get("http://localhost:9001/api/requests")
       .then((res) => {
         console.log(res.data);
-        setRequests(res.data.requests);
+        setRequests(res.data.requests.filter(request => request.requestBy != props.user.username));
         console.log(requests);
         setLoaded(true);
       })
@@ -41,6 +41,8 @@ export default (props) => {
     //
     // fetch();
   }, []);
+
+ 
 
   const postReply = (request) => {
     const editedRequest = {
@@ -76,7 +78,7 @@ export default (props) => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {loaded && request.requestBy !== props.user.username ? (
+            {loaded ? (
               <div>
                 <h5>
                   Here are Requests others have posted.
@@ -92,13 +94,11 @@ export default (props) => {
                             <li className="page-item">
                               
                               {request.requestBy !== undefined ? (
-                                <>
-                                {request.request} -
+                                <>{request.request} -
                                 {" "}
                                 {request.requestBy
                                     .charAt(0)
-                                    .toUpperCase()}{" "}
-                                    </>
+                                    .toUpperCase()}{" "}</>
                                     ) : (
                                       <>{request.requestBy}</>
                                       
@@ -125,7 +125,7 @@ export default (props) => {
                             </form>)
                           </div>
                         );
-                      })
+                              
                       <br />
                       {/* <li>
                         <a href="">Previous</a>
@@ -149,7 +149,7 @@ export default (props) => {
                 Looks like there are no requests at the moment.. Check back
                 again later!
               </p>
-            )}
+)}
             
           </Modal.Body>
           <Modal.Footer>
