@@ -3,6 +3,7 @@ import axios from "axios";
 import { Button, Modal } from "react-bootstrap";
 
 import Dragonite from "../components/Dragonite";
+import { request } from "https";
 // import DeleteButton from "./DeleteButton";
 
 // BASICALLY COPIED OVER FROM TEAM MANAGER AND FIXING VARIABLES.
@@ -75,7 +76,7 @@ export default (props) => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {loaded ? (
+            {loaded && request.requestBy !== props.user.username ? (
               <div>
                 <h5>
                   Here are Requests others have posted.
@@ -89,7 +90,7 @@ export default (props) => {
                         return (
                           <div key={idx}>
                             <li className="page-item">
-                              {request.requestBy !== props.user.username ? <>
+                              
                               {request.requestBy !== undefined ? (
                                 <>
                                 {request.request} -
@@ -103,7 +104,7 @@ export default (props) => {
                                       
                                       )}
                             
-                      </> :
+                      
                       </li>
                                     
                             {/* Make these form responses hidden and appear when clicked on the link of message... */}
