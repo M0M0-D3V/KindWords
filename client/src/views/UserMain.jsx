@@ -241,7 +241,7 @@ export default (props) => {
           </audio>
         </div> */}
         {/* AIRPLANE SOCKET HERE!!! */}
-        <div class="col-md-6">
+        {/* <div class="col-md-6">
           <h5>
             Got some love to spread?
             <br />
@@ -262,9 +262,9 @@ export default (props) => {
             <button className="btn btn-success btn-sm">Send!</button>
           </form>
         </div>
-        <div class="col-md-6" style={{ height: "100px" }}>
-          {/* <p>{currentAirPlane.airPlane}</p> */}
-          <h4>Happy Thoughts From Others!</h4>
+        <div class="col-md-6" style={{ height: "100px" }}> */}
+        {/* <p>{currentAirPlane.airPlane}</p> */}
+        {/* <h4>Happy Thoughts From Others!</h4>
           {console.log(currentAirPlane.airPlane)}
           {currentAirPlane.airPlane.map((airPlane, i) => {
             return (
@@ -272,8 +272,8 @@ export default (props) => {
                 Message: {airPlane.message} | On: {airPlane.date}
               </p>
             );
-          })}
-        </div>
+          })} */}
+        {/* </div> */}
       </div>
     </div>
   );

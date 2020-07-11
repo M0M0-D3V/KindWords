@@ -33,7 +33,11 @@ export default (props) => {
       .get("http://localhost:9001/api/requests")
       .then((res) => {
         console.log(res.data);
-        setRequests(res.data.requests.filter(request => request.requestBy != props.user.username));
+        setRequests(
+          res.data.requests.filter(
+            (request) => request.requestBy !== props.user.username
+          )
+        );
         console.log(requests);
         setLoaded(true);
       })
@@ -41,8 +45,6 @@ export default (props) => {
     //
     // fetch();
   }, []);
-
- 
 
   const postReply = (request) => {
     const editedRequest = {
@@ -56,6 +58,7 @@ export default (props) => {
       )
       .then((res) => {
         console.log(res.data);
+        setReply(res.data.response);
       })
       .catch((err) => {
         console.log(err);
@@ -92,26 +95,19 @@ export default (props) => {
                         return (
                           <div key={idx}>
                             <li className="page-item">
-                              
                               {request.requestBy !== undefined ? (
-                                <>{request.request} -
-                                {" "}
-                                {request.requestBy
-                                    .charAt(0)
-                                    .toUpperCase()}{" "}</>
-                                    ) : (
-                                      <>{request.requestBy}</>
-                                      
-                                      )}
-                            
-                      
-                      </li>
-                                    
-                            {/* Make these form responses hidden and appear when clicked on the link of message... */}
+                                <>
+                                  {request.request} -{" "}
+                                  {request.requestBy.charAt(0).toUpperCase()}{" "}
+                                </>
+                              ) : (
+                                <>{request.requestBy}</>
+                              )}
+                            </li>
                             <form
-                            onSubmit={postReply(request)}
+                              onSubmit={postReply(request)}
                               id={request._id}
-                              >
+                            >
                               <input type="hidden" id={request._id} />
                               <textarea
                                 className="form-control"
@@ -119,38 +115,37 @@ export default (props) => {
                                 onChange={(event) => {
                                   setReply(event.target.value);
                                 }}
-                                ></textarea>
+                              ></textarea>
                               <button className="btn btn-info">Reply</button>
                               <br /> <br />
-                            </form>)
+                            </form>
                           </div>
                         );
-                              
+                      })}
                       <br />
                       {/* <li>
                         <a href="">Previous</a>
-                        </li>
-                        <li>
+                      </li>
+                      <li>
                         <a href="">Next</a>
                       </li> */}
                     </ul>
                   </nav>
                 </div>
                 {/* <div style={{ textAlign: "center" }}>
-                <Button variant="outline-dark">Previous</Button>
-                {"   "}
-                <Button variant="outline-dark">Reply</Button>
-                {"   "}
-                <Button variant="outline-dark">Next</Button>
-              </div> */}
+                  <Button variant="outline-dark">Previous</Button>
+                  {"   "}
+                  <Button variant="outline-dark">Reply</Button>
+                  {"   "}
+                  <Button variant="outline-dark">Next</Button>
+                </div> */}
               </div>
-              ) : (
+            ) : (
               <p>
                 Looks like there are no requests at the moment.. Check back
                 again later!
               </p>
-)}
-            
+            )}
           </Modal.Body>
           <Modal.Footer>
             <Button variant="info" onClick={props.onHide}>
@@ -158,7 +153,7 @@ export default (props) => {
             </Button>
           </Modal.Footer>
         </Modal>
-        </div>
-        </div>
-        );
+      </div>
+    </div>
+  );
 };
