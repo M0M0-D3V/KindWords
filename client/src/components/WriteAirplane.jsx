@@ -12,7 +12,7 @@ export default (props) => {
   // Called back from Form, creates new request in DB
   const createPlane = (request) => {
     axios
-      .post("http://localhost:9001/api/airplanes/new", request)
+      .post("http://localhost:9000/api/airplanes/new", request)
       .then((res) => {
         console.log("Response: ", res);
         navigate("/");

@@ -7,7 +7,7 @@ export default (props) => {
   const logout = () => {
     axios
       .post(
-        "http://localhost:9001/api/logout",
+        "http://localhost:9000/api/logout",
         {},
         {
           // need to send the cookie in request so server can clear it

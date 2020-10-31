@@ -53,7 +53,7 @@ export default (props) => {
     console.log(request);
     axios
       .put(
-        `http://localhost:9001/api/requests/update/${request._id}`,
+        `http://localhost:9000/api/requests/update/${request._id}`,
         editedRequest
       )
       .then((res) => {
