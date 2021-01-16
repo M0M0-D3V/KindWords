@@ -38,7 +38,7 @@ export default (props) => {
 
   const nameChange = (e) => {
     setUsername(e.target.value);
-    // e.garget.value.length < 5
+    // e.target.value.length < 5
     // ? setUserNameError(true)
     // : setUserNameError(false);
   };
