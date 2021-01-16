@@ -9,53 +9,27 @@ import Dragonite from "../components/Dragonite";
 // HAHAHAHAHAHAHAHA
 // user is in props. can use props.user.username or ._id
 export default (props) => {
-  const [requests, setRequests] = useState([]);
+  const [requests, setRequests] = useState(null);
   const [loaded, setLoaded] = useState(false);
-
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:9001/api/requests")
-  //     .then((res) => {
-  //       setRequests(res.data);
-  //       setLoaded(true);
-  //     })
-  //     .catch((err) => console.log("Error: ", err));
-  // }, []);
-
-  // useEffect(() => {
-  //   props.data.setRequests(props.data.requests);
-  // }, [props.data]);
 
   useEffect(() => {
     axios
       .get("http://localhost:9001/api/requests")
       .then((res) => {
-        console.log(res.data);
-        setRequests(...res.data);
+        // console.log(res.data);
+        setRequests(res.data.requests);
         setLoaded(true);
       })
       .catch((err) => console.log("Error: ", err));
     //
     // fetch();
-  }, [props]);
+  }, []);
 
-  // const fetch = () => {
-  //   // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:9001/api/requests")
-  //     .then((res) => {
-  //       setRequests(...res.data);
-  //       setLoaded(true);
-  //     })
-  //     .catch((err) => console.log("Error: ", err));
-  // }, []);
-  // };
-
-  // const removeFromDom = (requestID) => {
-  //   data.setRequests(
-  //     data.requests.filter((request) => request._id !== requestID)
-  //   );
-  // };
+  const filterRequestByUser = () => {
+    return requests.filter(
+      (request) => request.requestBy === props.user.username
+    );
+  };
 
   return (
     <div className="h-100">
@@ -68,38 +42,44 @@ export default (props) => {
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-              View Requests
-            </Modal.Title>
+            <Modal.Title id="contained-modal-title-vcenter">INBOX</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {loaded ? (
               <div>
                 <h5>
-                  Here are some Responses others have written for your Requests?
+                  Hey, {props.user.username}! Here are some Responses others
+                  have written for your Requests!
                 </h5>
 
                 <div className="container">
-                  <ul className="pagination">
-                    {requests.map((request, idx) => {
+                  {/* <ul className="pagination"> */}
+                  {console.log(filterRequestByUser(requests))}
+                  <ul>
+                    {/* Your previous Requests... */}
+                    {filterRequestByUser(requests).map((request, idx) => {
                       return (
-                        <li key={idx}>
-                          {request.request} -{request.requestBy}
-                        </li>
+                        <div key={idx}>
+                          <li className="page-item">
+                            For: {request.request} -They wrote:{" "}
+                            {request.response.body}
+                          </li>
+                        </div>
                       );
                     })}
                   </ul>
+                  {/* </ul> */}
                 </div>
-                <div style={{ textAlign: "center" }}>
+                {/* <div style={{ textAlign: "center" }}>
                   <Button variant="outline-dark">Previous</Button>
                   {"   "}
                   <Button variant="outline-dark">Next</Button>
-                </div>
+                </div> */}
               </div>
             ) : (
               <p>
-                Looks like there are no replies at the moment.. Check back again
-                later!
+                Sorry {props.user.username}, Looks like there are no replies at
+                the moment.. Check back again later!
               </p>
             )}
           </Modal.Body>

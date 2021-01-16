@@ -1,23 +1,57 @@
-P0 [x]: Resource Links and User conduct info
-P0 [x]: Login/Reg
-P0 []: Socket to have live connection and see airplanes
-P0 []: Request System- Make Request, and View Requests and write Replies
-P0 []: Inbox to receive and view Replies
-P0 [x]: Starfield and general colors picked
+![alt text](https://m0m0-d3v.github.io/img/kindwordsawwapp.png "kindwordsawwapp")
 
-P1 []: Airplanes have lifespan of 1 hour and autodeletes from db
-P1 []: COLOR PALETTE FIX
-P1 []: Delete Requests with confirmations
-P1 []: See Request History
-P1 []: Logo and Theme
-P1 []: Cute mascot that coordinates and prompts UX with appropriate dialogue
+# A group project inspired by the indie steam game called "KindWords" that brings people together to write kind, thoughtful, and encouraging letters to each other.
 
-P2 []: Admin to moderate Report abuse
-P2 []: SPOTIFY API
-P2 []: Everything in "/" so that music is uninterrupted
-P2 []: Pretty Animations
-P2 []: Ability to save replies to file in a nice format
-P2 []: Toggle Daytime Theme. HA
-P2 []: Design avatar game feature
-P2 []: Stickers feature or other Thank you Gift idea
-P2 []: OTHERS!
+#### Meet the team:
+- Sawyee Beck
+- Levi Blank
+- Patrick Hebert
+- Monica Hong
+
+### KindWords was built in a week's time- 3 days of planning and research and 4 days of coding.
+My team was able to achieve the below for **MVP**:
+* [x] Resource Links and User conduct info
+- [x] COLOR PALETTE FIX
+* [x] Login/Reg
+* [x] Socket.io implementation to have live connection
+  * [x] Allow multiple users to chat in real-time
+* [x] Request System
+  * [x] Allow user to create "Requests" for advice
+  * [x] Allow user to View Requests from other users
+  * [x] Allow user to write Replies other user Requests
+* [x] Inbox to receive and view Replies
+  * [x] See history of all Requests made
+* [x] Starfield and general colors picked
+- [x] Custom Music Player
+- [x] Strict single page in "/" so that music is uninterrupted
+
+# The below are features in development currently.
+
+- [ ] Advice requesting system revision
+  - [ ] Revise Schema / Queries to capture Response message body text
+  - [ ] Delete Requests from Inbox history with confirmations
+  - [ ] Revise DB Query for View Requests to block requests made by self
+
+- [ ] Moderating System...
+  - [ ] Integrate Sentiment Analysis API to gauge emotions and intentions of User post requests and responses to automate a way to moderate without Admin involvement for each case by case scenario which can allow for overall improved quality and growth in community
+  - [ ] Admin to moderate as backup
+  
+- [ ] Live chat application
+  - [ ] Chat message have lifespan of 1 hour and autodeletes from db
+
+- [ ] User Interface / Interaction
+  - [ ] Chat application to show/hide when clicking the Button
+    - [ ] Chat messages to appear one at a time in even time duration
+      - [ ] Add a twinkle and fade effect on chat message text
+  - [ ] Logo designing
+  - [ ] Coordinating animations
+  - [ ] Interactive mascot
+    - [ ] alert thanks user for writing a kind letter
+    - [ ] alerts user when new message has arrived
+  - [ ] Ability to save replies to file in a nice formatted pdf or doc so users can take with them outside of the website
+  - [ ] Toggle Daytime Theme. HA
+  - [ ] Design avatar game feature
+  - [ ] Stickers feature or other Thank you Gift idea
+  - [ ] Music player improvements
+
+- [ ] OTHERS!

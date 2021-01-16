@@ -14,6 +14,7 @@ import Dragonite from "../components/Dragonite";
 import NewRequest from "../components/NewRequest";
 import ViewRequests from "../components/ViewRequests";
 import WriteAirplane from "../components/WriteAirplane";
+import io from "socket.io-client";
 
 // THIS IS USER DASHBOARD WHERE EVERYTHING HAPPENS
 // [x] CHANGE TO GET 1 USER ONLY
@@ -22,18 +23,44 @@ import WriteAirplane from "../components/WriteAirplane";
 // [x] VIEW REQUESTS BUTTON
 // [x] WRITE AIRPLANE BUTTON
 
+const socket = io(":9001");
+
 export default (props) => {
   const [view, setView] = useState(0);
   const [modalShow, setModalShow] = useState(false);
   const [user, setUser] = useState([]);
+  const [currentAirPlane, setCurrentAirPlane] = useState({ airPlane: [] });
+  const [airPlane, setAirPlane] = useState([]);
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     getLoggedInUser();
   }, []);
 
+  useEffect(() => {
+    socket.on("updated Airplane", (updatedAirPlane) => {
+      setCurrentAirPlane(updatedAirPlane);
+      setAirPlane(updatedAirPlane.airPlane);
+    });
+    return () => {
+      socket.disconnect(true);
+    };
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(airPlane);
+    socket.emit("new airplane", airPlane);
+  };
+
+  const onAirPlaneChange = (e) => {
+    setAirPlane(e.target.value);
+    e.target.value.length < 8 ? setErrors(true) : setErrors(false);
+  };
+
   const getLoggedInUser = () => {
     axios
-      .get("http://localhost:9001/api/users/loggedin", {
+      .get("http://localhost:9000/api/users/loggedin", {
         withCredentials: true,
       })
       .then((res) => setUser(res.data))
@@ -45,10 +72,11 @@ export default (props) => {
   };
   const firstInitial = (name) => {
     // [] NEED FIRST INITIAL TO WORK FOR PRIVACY
-    return name;
-    // const temp = name;
-    // temp.charAt(0);  //why won't this work!??!?!
-    // .toUpperCase();
+    let temp = name;
+    console.log(`name is ${name}`);
+    name !== undefined ? (temp = name.charAt(0).toUpperCase()) : (temp = name);
+
+    return temp;
   };
   return (
     <div className="container" style={{ height: "650px" }}>
@@ -67,15 +95,12 @@ export default (props) => {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="disabled" disabled>
-            MUSIC
+            <audio controls autoPlay>
+              <source src={song} type="audio/mpeg"></source>
+            </audio>
           </Nav.Link>
         </Nav.Item>
-        <NavDropdown
-          bg="dark"
-          variant="dark"
-          title="HELP"
-          id="collasible-nav-dropdown"
-        >
+        <NavDropdown title="HELP" id="collasible-nav-dropdown">
           <NavDropdown.Item
             onClick={(e) => {
               setView(5);
@@ -85,6 +110,8 @@ export default (props) => {
             Help Resources
           </NavDropdown.Item>
           <NavDropdown.Item
+            bg="dark"
+            variant="dark"
             onClick={(e) => {
               setView(6);
               setModalShow(true);
@@ -161,6 +188,14 @@ export default (props) => {
         />
       ) : view === 3 ? (
         <WriteAirplane
+          data={
+            (user,
+            currentAirPlane,
+            setCurrentAirPlane,
+            airPlane,
+            setAirPlane,
+            socket)
+          }
           user={user}
           show={modalShow}
           onHide={(e) => setModalShow(false)}
@@ -198,9 +233,48 @@ export default (props) => {
       ) : (
         <p></p>
       )}
-      <audio controls autoPlay>
-        <source src={song} type="audio/mpeg"></source>
-      </audio>
+      {/* MUSIC HERE!! */}
+      <div className="row inline">
+        {/* <div>
+          <audio controls autoPlay>
+            <source src={song} type="audio/mpeg"></source>
+          </audio>
+        </div> */}
+        {/* AIRPLANE SOCKET HERE!!! */}
+        {/* <div class="col-md-6">
+          <h5>
+            Got some love to spread?
+            <br />
+            Maybe a favorite quote?
+          </h5>
+          <form
+            onSubmit={(event) => {
+              handleSubmit(event);
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Write here..."
+              value={airPlane.airPlane}
+              onChange={onAirPlaneChange}
+            />
+
+            <button className="btn btn-success btn-sm">Send!</button>
+          </form>
+        </div>
+        <div class="col-md-6" style={{ height: "100px" }}> */}
+        {/* <p>{currentAirPlane.airPlane}</p> */}
+        {/* <h4>Happy Thoughts From Others!</h4>
+          {console.log(currentAirPlane.airPlane)}
+          {currentAirPlane.airPlane.map((airPlane, i) => {
+            return (
+              <p key={i}>
+                Message: {airPlane.message} | On: {airPlane.date}
+              </p>
+            );
+          })} */}
+        {/* </div> */}
+      </div>
     </div>
   );
 };
