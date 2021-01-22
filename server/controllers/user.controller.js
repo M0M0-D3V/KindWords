@@ -5,12 +5,17 @@ const jwt = require("jsonwebtoken");
 // export an object that is full of methods
 module.exports = {
   register(req, res) {
-    const user = new User(req.body);
-
-    user
-      .save()
-      .then(() => {
-        res.json({ msg: "success!", user: user });
+    User.create(req.body)
+      .then((user) => {
+        const userToken = jwt.sign({_id: user._id }, process.env.JWT_SECRET)
+        res.cookie(
+                    "usertoken",
+                    userToken,
+                    {
+                      httpOnly: true
+                    }
+                  )
+                  .json({ msg: "success!", user });
       })
       .catch((err) => res.status(400).json(err));
   },
@@ -33,7 +38,7 @@ module.exports = {
                       httpOnly: true,
                     }
                   )
-                  .json({ msg: "success!" });
+                  .json({ msg: "success!", user });
               } else {
                 res.status(400).json({ msg: "invalid login attempt" });
               }

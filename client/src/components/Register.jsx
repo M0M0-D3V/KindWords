@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Button } from "react-bootstrap";
+import { navigate } from "@reach/router";
 
 export default (props) => {
   const [username, setUsername] = useState("");
@@ -12,7 +13,7 @@ export default (props) => {
   // const [usernameError, setUserNameError] = useState(true);
   // const [passwordError, setPasswordError] = useState(true);
 
-  const register = (event) => {
+  const submitHandler = (event) => {
     event.preventDefault();
 
     const newUser = { username, email, password, confirmPassword };
@@ -28,9 +29,10 @@ export default (props) => {
         setEmail("");
         setPassword("");
         setConfirmPassword("");
+        navigate("/");
       })
       .catch((err) => {
-        console.log(err, "this is error");
+        console.log(err.response, "this is error");
 
         setErrors(err.response.data.errors);
       });
@@ -58,7 +60,7 @@ export default (props) => {
     <fieldset>
       <legend>Register</legend>
 
-      <form onSubmit={register}>
+      <form onSubmit={submitHandler}>
         <label>Username:</label>
         <input
           className="form-control"
