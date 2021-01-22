@@ -48,7 +48,7 @@ export default (props) => {
   const postReply = (request) => {
     console.log(`request is: ${request}`)
     const editedRequest = {
-      response: [reply],
+      responsesFromUsers: [reply],
     };
     console.log(request);
     axios
