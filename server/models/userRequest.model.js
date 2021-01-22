@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const minlengthMsg = "{PATH} must be at least {MINLENGTH} characters.";
 
-const RequestSchema = new mongoose.Schema(
+const UserRequestSchema = new mongoose.Schema(
   {
     // Schema for logged in user to be able to create Requests and put it in the "bulletin" for everyone else to View and/or Respond to..
     userRequest: {
@@ -37,6 +37,6 @@ const RequestSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Request = mongoose.model("Request", RequestSchema);
+const UserRequest = mongoose.model("UserRequest", UserRequestSchema);
 
-module.exports = Request;
+module.exports = UserRequest;

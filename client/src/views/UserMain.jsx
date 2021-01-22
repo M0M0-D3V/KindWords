@@ -45,7 +45,7 @@ export default (props) => {
     return () => {
       socket.disconnect(true);
     };
-  }, []);
+  }, [airPlane]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -60,7 +60,7 @@ export default (props) => {
 
   const getLoggedInUser = () => {
     axios
-      .get("http://localhost:9000/api/users/loggedin", {
+      .get("http://localhost:9001/api/users/loggedin", {
         withCredentials: true,
       })
       .then((res) => setUser(res.data))
@@ -162,7 +162,7 @@ export default (props) => {
           View Requests
         </Button>
         {"      "}
-        <Button
+        {/* <Button
           variant="outline-info"
           onClick={(e) => {
             setView(3);
@@ -170,7 +170,7 @@ export default (props) => {
           }}
         >
           Send a Happy Thought!
-        </Button>
+        </Button> */}
       </div>
       {view === 0 ? (
         <Dragonite />
@@ -186,20 +186,20 @@ export default (props) => {
           show={modalShow}
           onHide={(e) => setModalShow(false)}
         />
-      ) : view === 3 ? (
-        <WriteAirplane
-          data={
-            (user,
-            currentAirPlane,
-            setCurrentAirPlane,
-            airPlane,
-            setAirPlane,
-            socket)
-          }
-          user={user}
-          show={modalShow}
-          onHide={(e) => setModalShow(false)}
-        />
+      // ) : view === 3 ? (
+      //   <WriteAirplane
+      //     data={
+      //       (user,
+      //       currentAirPlane,
+      //       setCurrentAirPlane,
+      //       airPlane,
+      //       setAirPlane,
+      //       socket)
+      //     }
+      //     user={user}
+      //     show={modalShow}
+      //     onHide={(e) => setModalShow(false)}
+      //   />
       ) : view === 4 ? (
         <Inbox
           user={user}

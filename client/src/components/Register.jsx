@@ -19,7 +19,7 @@ export default (props) => {
     const newUser = { username, email, password, confirmPassword };
 
     axios
-      .post("http://localhost:9000/api/register", newUser, {
+      .post("http://localhost:9001/api/register", newUser, {
         withCredentials: true,
       })
       .then((res) => {

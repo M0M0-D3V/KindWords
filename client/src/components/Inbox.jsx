@@ -14,7 +14,7 @@ export default (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:9001/api/requests")
+      .get("http://localhost:9001/api/kindwords")
       .then((res) => {
         // console.log(res.data);
         setRequests(res.data.requests);
@@ -54,10 +54,10 @@ export default (props) => {
 
                 <div className="container">
                   {/* <ul className="pagination"> */}
-                  {console.log(filterRequestByUser(requests))}
+                  {/* {console.log(filterRequestByUser(requests))} */}
                   <ul>
                     {/* Your previous Requests... */}
-                    {filterRequestByUser(requests).map((request, idx) => {
+                    {/* {filterRequestByUser(requests).map((request, idx) => {
                       return (
                         <div key={idx}>
                           <li className="page-item">
@@ -66,7 +66,7 @@ export default (props) => {
                           </li>
                         </div>
                       );
-                    })}
+                    })} */}
                   </ul>
                   {/* </ul> */}
                 </div>
