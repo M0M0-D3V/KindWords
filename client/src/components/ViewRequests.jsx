@@ -3,7 +3,6 @@ import axios from "axios";
 import { Button, Modal } from "react-bootstrap";
 
 import Dragonite from "../components/Dragonite";
-import { request } from "https";
 // import DeleteButton from "./DeleteButton";
 
 // BASICALLY COPIED OVER FROM TEAM MANAGER AND FIXING VARIABLES.
@@ -30,15 +29,15 @@ export default (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:9001/api/requests")
+      .get("http://localhost:9001/api/kindwords")
       .then((res) => {
+        console.log('console.logging res.data');
         console.log(res.data);
         setRequests(
-          res.data.requests.filter(
-            (request) => request.requestBy !== props.user.username
+          res.data.allRequests.filter(
+            (userRequest) => userRequest.requestBy !== props.user.username
           )
         );
-        console.log(requests);
         setLoaded(true);
       })
       .catch((err) => console.log("Error: ", err));
@@ -47,13 +46,14 @@ export default (props) => {
   }, []);
 
   const postReply = (request) => {
+    console.log(`request is: ${request}`)
     const editedRequest = {
       response: [reply],
     };
     console.log(request);
     axios
       .put(
-        `http://localhost:9000/api/requests/update/${request._id}`,
+        `http://localhost:9001/api/kindwords/update/${request._id}`,
         editedRequest
       )
       .then((res) => {

@@ -15,7 +15,7 @@ export default (props) => {
 
   const getLoggedInUser = () => {
     axios
-      .get("http://localhost:9000/api/users/loggedin", {
+      .get("http://localhost:9001/api/users/loggedin", {
         withCredentials: true,
       })
       .then((res) => setUser(res.data))

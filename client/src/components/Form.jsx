@@ -8,20 +8,20 @@ import { Form } from "react-bootstrap";
 
 export default ({ onSubmitProp, errors, user }) => {
   // console.log(errors);
-  const [request, setRequest] = useState("");
+  const [userRequest, setUserRequest] = useState("");
   const [requestBy, setRequestBy] = useState("");
-  const [requestError, setRequestError] = useState(true);
+  const [userRequestError, setUserRequestError] = useState(true);
 
   const onRequestChange = (e) => {
-    setRequest(e.target.value);
+    setUserRequest(e.target.value);
     setRequestBy(user.username);
-    e.target.value.length < 8 ? setRequestError(true) : setRequestError(false);
+    e.target.value.length < 8 ? setUserRequestError(true) : setUserRequestError(false);
   };
 
   const onSubmitHandler = (e) => {
-    console.log("this is event" + " " + e.response);
+    console.log("this is event" + " " + e);
     e.preventDefault();
-    onSubmitProp({ request, requestBy });
+    onSubmitProp({ userRequest, requestBy });
   };
 
   return (
@@ -33,7 +33,7 @@ export default ({ onSubmitProp, errors, user }) => {
             rows="10"
             size="lg"
             placeholder="Write here..."
-            value={request}
+            value={userRequest}
             onChange={onRequestChange}
             autoFocus
           />
@@ -49,7 +49,7 @@ export default ({ onSubmitProp, errors, user }) => {
         ) : (
           ""
         )}
-        {request.length < 8 ? (
+        {userRequest.length < 8 ? (
           <>
             <p className="lead" style={{ color: "orange" }}>
               Write at least 8 characters.
