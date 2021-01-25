@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import axios from "axios";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Pagination } from "react-bootstrap";
 
 import Dragonite from "../components/Dragonite";
 // import DeleteButton from "./DeleteButton";
@@ -10,28 +10,16 @@ import Dragonite from "../components/Dragonite";
 // user is in props. can use props.user.username or ._id
 export default (props) => {
   const [requests, setRequests] = useState(null);
-  const [reply, setReply] = useState([]);
   const [loaded, setLoaded] = useState(false);
-
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:9001/api/requests")
-  //     .then((res) => {
-  //       setRequests(res.data);
-  //       setLoaded(true);
-  //     })
-  //     .catch((err) => console.log("Error: ", err));
-  // }, []);
-
-  // useEffect(() => {
-  //   props.data.setRequests(props.data.requests);
-  // }, [props.data]);
+  const [loading, setLoading] = useState(false);
+  const [currentView, setCurrentView] = useState(1);
+  const [postPerView, setPostPerView] = useState(1);
 
   useEffect(() => {
     axios
       .get("http://localhost:9001/api/kindwords")
       .then((res) => {
-        console.log('console.logging res.data');
+        console.log("console.logging res.data");
         console.log(res.data);
         setRequests(
           res.data.allRequests.filter(
@@ -43,27 +31,10 @@ export default (props) => {
       .catch((err) => console.log("Error: ", err));
     //
     // fetch();
-  }, []);
+  }, [props.user.username]);
 
-  const postReply = (request) => {
-    console.log(`request is: ${request}`)
-    const editedRequest = {
-      responsesFromUsers: [reply],
-    };
-    console.log(request);
-    axios
-      .put(
-        `http://localhost:9001/api/kindwords/update/${request._id}`,
-        editedRequest
-      )
-      .then((res) => {
-        console.log(res.data);
-        setReply(res.data.response);
-      })
-      .catch((err) => {
-        console.log(err);
-      }, []);
-  };
+  let requestsToViewArray = [];
+  // *********************TRY TO BUILD PAGINATION
 
   return (
     <div className="h-100">
@@ -90,55 +61,31 @@ export default (props) => {
                 </h5>
                 <div className="container">
                   <nav aria-label="Request Label">
-                    <ul>
-                      {requests.map((request, idx) => {
-                        return (
-                          <div key={idx}>
-                            <li className="page-item">
-                              {request.requestBy !== undefined ? (
-                                <>
-                                  {request.request} -{" "}
-                                  {request.requestBy.charAt(0).toUpperCase()}{" "}
-                                </>
-                              ) : (
-                                <>{request.requestBy}</>
-                              )}
-                            </li>
-                            <form
-                              onSubmit={postReply(request)}
-                              id={request._id}
-                            >
-                              <input type="hidden" id={request._id} />
-                              <textarea
-                                className="form-control"
-                                rows="3"
-                                onChange={(event) => {
-                                  setReply(event.target.value);
-                                }}
-                              ></textarea>
-                              <button className="btn btn-info">Reply</button>
-                              <br /> <br />
-                            </form>
-                          </div>
-                        );
-                      })}
-                      <br />
-                      {/* <li>
-                        <a href="">Previous</a>
-                      </li>
-                      <li>
-                        <a href="">Next</a>
-                      </li> */}
-                    </ul>
+                    {requests.map((request, idx) => {
+                      return (
+                        <div key={idx}>
+                          <li className="page-item">
+                            {request.requestBy !== undefined ? (
+                              <>
+                                {request.userRequest} -{" "}
+                                {request.requestBy.charAt(0).toUpperCase()}{" "}
+                              </>
+                            ) : (
+                              <>{request.requestBy}</>
+                            )}
+                          </li>
+                        </div>
+                      );
+                    })}
                   </nav>
                 </div>
-                {/* <div style={{ textAlign: "center" }}>
+                <div style={{ textAlign: "center" }}>
                   <Button variant="outline-dark">Previous</Button>
                   {"   "}
                   <Button variant="outline-dark">Reply</Button>
                   {"   "}
                   <Button variant="outline-dark">Next</Button>
-                </div> */}
+                </div>
               </div>
             ) : (
               <p>

@@ -16,8 +16,8 @@ export default (props) => {
     axios
       .get("http://localhost:9001/api/kindwords")
       .then((res) => {
-        // console.log(res.data);
-        setRequests(res.data.requests);
+        console.log(res.data);
+        setRequests(res.data.allRequests);
         setLoaded(true);
       })
       .catch((err) => console.log("Error: ", err));
@@ -27,7 +27,7 @@ export default (props) => {
 
   const filterRequestByUser = () => {
     return requests.filter(
-      (request) => request.requestBy === props.user.username
+      (request) => request.requestBy !== props.user.username
     );
   };
 
@@ -57,16 +57,16 @@ export default (props) => {
                   {/* {console.log(filterRequestByUser(requests))} */}
                   <ul>
                     {/* Your previous Requests... */}
-                    {/* {filterRequestByUser(requests).map((request, idx) => {
+                    {requests.filter((request) => request.requestBy === props.user.username).map((request, idx) => {
                       return (
                         <div key={idx}>
                           <li className="page-item">
-                            For: {request.request} -They wrote:{" "}
-                            {request.response.body}
+                            For: {request.userRequest} -They wrote:{" "}
+                            {request.responsesFromUsers.messageBody}
                           </li>
                         </div>
                       );
-                    })} */}
+                    })}
                   </ul>
                   {/* </ul> */}
                 </div>
