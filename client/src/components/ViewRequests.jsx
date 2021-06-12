@@ -31,7 +31,7 @@ export default (props) => {
     axios
       .get("http://localhost:9001/api/kindwords")
       .then((res) => {
-        console.log('console.logging res.data');
+        console.log("console.logging res.data");
         console.log(res.data);
         setRequests(
           res.data.allRequests.filter(
@@ -46,7 +46,7 @@ export default (props) => {
   }, []);
 
   const postReply = (request) => {
-    console.log(`request is: ${request}`)
+    console.log(`request is: ${request}`);
     const editedRequest = {
       response: [reply],
     };
@@ -96,12 +96,12 @@ export default (props) => {
                           <div key={idx}>
                             <li className="page-item">
                               {request.requestBy !== undefined ? (
-                                <>
+                                <div>
                                   {request.request} -{" "}
                                   {request.requestBy.charAt(0).toUpperCase()}{" "}
-                                </>
+                                </div>
                               ) : (
-                                <>{request.requestBy}</>
+                                <div>{request.requestBy}</div>
                               )}
                             </li>
                             <form
