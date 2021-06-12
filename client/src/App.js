@@ -7,17 +7,15 @@ import { Container } from "react-bootstrap";
 
 function App() {
   return (
-    <>
-      <div>
-        <Container>
-          <Router>
-            <UserMain path="/" />
-            <Welcome path="/welcome" />
-            <LogReg path="/login" />
-          </Router>
-        </Container>
-      </div>
-    </>
+    <div>
+      <Container>
+        <Router>
+          <UserMain path="/" />
+          <Welcome path="/welcome" />
+          <LogReg path="/login" />
+        </Router>
+      </Container>
+    </div>
   );
 }
 

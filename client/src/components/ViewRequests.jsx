@@ -52,7 +52,7 @@ export default (props) => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {loaded ? (
+            {requests ? (
               <div>
                 <h5>
                   Here are Requests others have posted.
@@ -66,12 +66,12 @@ export default (props) => {
                         <div key={idx}>
                           <li className="page-item">
                             {request.requestBy !== undefined ? (
-                              <>
+                              <div>
                                 {request.userRequest} -{" "}
                                 {request.requestBy.charAt(0).toUpperCase()}{" "}
-                              </>
+                              </div>
                             ) : (
-                              <>{request.requestBy}</>
+                              <div>{request.requestBy}</div>
                             )}
                           </li>
                         </div>

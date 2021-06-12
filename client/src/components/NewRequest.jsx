@@ -7,6 +7,7 @@ import { Button, Modal } from "react-bootstrap";
 import Dragonite from "../components/Dragonite";
 
 export default (props) => {
+  const { user, modalShow, setModalShow, onHide } = props;
   const [errors, setErrors] = useState([]);
 
   // Called back from Form, creates new request in DB
@@ -15,9 +16,13 @@ export default (props) => {
       .post("http://localhost:9001/api/kindwords/new", request)
       .then((res) => {
         console.log("Response: ", res);
-        navigate("/");
+        // navigate("/");
+        // setModalShow(false);
       })
-      .catch((err) => setErrors(err.response.data.errors));
+      .catch((err) => {
+        console.log(err);
+        setErrors(err.response.data.errors);
+      });
   };
 
   return (
@@ -41,14 +46,10 @@ export default (props) => {
               <br />
               Maybe someone else is too?
             </h5>
-            <Form
-              onSubmitProp={createRequest}
-              user={props.user}
-              errors={errors}
-            />
+            <Form onSubmitProp={createRequest} user={user} errors={errors} />
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="info" onClick={props.onHide}>
+            <Button variant="info" onClick={onHide}>
               Close
             </Button>
           </Modal.Footer>

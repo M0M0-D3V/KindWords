@@ -71,7 +71,7 @@ export default (props) => {
       });
   };
   const firstInitial = (name) => {
-    // [] NEED FIRST INITIAL TO WORK FOR PRIVACY
+    // [x] NEED FIRST INITIAL TO WORK FOR PRIVACY
     let temp = name;
     console.log(`name is ${name}`);
     name !== undefined ? (temp = name.charAt(0).toUpperCase()) : (temp = name);
@@ -94,11 +94,9 @@ export default (props) => {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="disabled" disabled>
-            <audio controls autoPlay>
-              <source src={song} type="audio/mpeg"></source>
-            </audio>
-          </Nav.Link>
+          <audio controls autoPlay>
+            <source src={song} type="audio/mpeg"></source>
+          </audio>
         </Nav.Item>
         <NavDropdown title="HELP" id="collasible-nav-dropdown">
           <NavDropdown.Item
@@ -186,7 +184,7 @@ export default (props) => {
           show={modalShow}
           onHide={(e) => setModalShow(false)}
         />
-      // ) : view === 3 ? (
+      ) : // ) : view === 3 ? (
       //   <WriteAirplane
       //     data={
       //       (user,
@@ -200,10 +198,11 @@ export default (props) => {
       //     show={modalShow}
       //     onHide={(e) => setModalShow(false)}
       //   />
-      ) : view === 4 ? (
+      view === 4 ? (
         <Inbox
           user={user}
           show={modalShow}
+          setModalShow={setModalShow}
           onHide={(e) => setModalShow(false)}
         />
       ) : view === 5 ? (
@@ -241,7 +240,7 @@ export default (props) => {
           </audio>
         </div> */}
         {/* AIRPLANE SOCKET HERE!!! */}
-        {/* <div class="col-md-6">
+        <div class="col-md-6">
           <h5>
             Got some love to spread?
             <br />
@@ -262,9 +261,9 @@ export default (props) => {
             <button className="btn btn-success btn-sm">Send!</button>
           </form>
         </div>
-        <div class="col-md-6" style={{ height: "100px" }}> */}
-        {/* <p>{currentAirPlane.airPlane}</p> */}
-        {/* <h4>Happy Thoughts From Others!</h4>
+        <div class="col-md-6" style={{ height: "100px" }}>
+          <p>{currentAirPlane.airPlane}</p>
+          <h4>Happy Thoughts From Others!</h4>
           {console.log(currentAirPlane.airPlane)}
           {currentAirPlane.airPlane.map((airPlane, i) => {
             return (
@@ -272,8 +271,8 @@ export default (props) => {
                 Message: {airPlane.message} | On: {airPlane.date}
               </p>
             );
-          })} */}
-        {/* </div> */}
+          })}
+        </div>
       </div>
     </div>
   );

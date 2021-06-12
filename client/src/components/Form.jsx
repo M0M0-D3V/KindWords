@@ -15,7 +15,9 @@ export default ({ onSubmitProp, errors, user }) => {
   const onRequestChange = (e) => {
     setUserRequest(e.target.value);
     setRequestBy(user.username);
-    e.target.value.length < 8 ? setUserRequestError(true) : setUserRequestError(false);
+    e.target.value.length < 8
+      ? setUserRequestError(true)
+      : setUserRequestError(false);
   };
 
   const onSubmitHandler = (e) => {
@@ -50,14 +52,14 @@ export default ({ onSubmitProp, errors, user }) => {
           ""
         )}
         {userRequest.length < 8 ? (
-          <>
+          <div>
             <p className="lead" style={{ color: "orange" }}>
               Write at least 8 characters.
             </p>
             <button disabled={true} className="btn btn-success btn-sm">
               Send
             </button>
-          </>
+          </div>
         ) : (
           <button className="btn btn-success btn-sm">Send!</button>
         )}
