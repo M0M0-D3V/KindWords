@@ -35,7 +35,12 @@ export default (props) => {
 
   let requestsToViewArray = [];
   // *********************TRY TO BUILD PAGINATION
-
+  const replyFunction = (e) => {
+    // click function to reply inside the ViewRequests
+    // [] turn off current modal
+    // [] open new modal to write reply in form
+    console.log("reply", e);
+  };
   return (
     <div className="h-100">
       <div className="container">
@@ -63,17 +68,17 @@ export default (props) => {
                   <nav aria-label="Request Label">
                     {requests.map((request, idx) => {
                       return (
-                        <div key={idx}>
-                          <li className="page-item">
+                        <div key={request._id}>
+                          <p className="page-item">
                             {request.requestBy !== undefined ? (
                               <div>
-                                {request.userRequest} -{" "}
                                 {request.requestBy.charAt(0).toUpperCase()}{" "}
+                                wrote - {request.userRequest}
                               </div>
                             ) : (
                               <div>{request.requestBy}</div>
                             )}
-                          </li>
+                          </p>
                         </div>
                       );
                     })}
